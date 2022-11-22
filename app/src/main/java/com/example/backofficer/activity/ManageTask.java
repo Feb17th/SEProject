@@ -1,5 +1,6 @@
 package com.example.backofficer.activity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -143,20 +144,7 @@ public class ManageTask extends AppCompatActivity implements View.OnClickListene
         if(id == R.id.ibBackPressManageTask){
             moveToChooseFeature();
         } else if(id == R.id.btnAddTaskManageTask){
-
-        }
-    }
-
-    private void moveToChooseFeature() {
-        String checkRole = checkRole();
-        if(checkRole.equals("backOfficer")){
-            Intent intent = new Intent(ManageTask.this, ChooseFeatureBackOfficer.class);
-            startActivity(intent);
-            finish();
-        } else if(checkRole.equals("employee")){
-            Intent intent = new Intent(ManageTask.this, ChooseFeatureEmployee.class);
-            startActivity(intent);
-            finish();
+            moveToCreateTask();
         }
     }
 
@@ -184,9 +172,28 @@ public class ManageTask extends AppCompatActivity implements View.OnClickListene
         finish();
     }
 
+    private void moveToChooseFeature() {
+        String checkRole = checkRole();
+        if(checkRole.equals("backOfficer")){
+            Intent intent = new Intent(ManageTask.this, ChooseFeatureBackOfficer.class);
+            startActivity(intent);
+            finish();
+        } else if(checkRole.equals("employee")){
+            Intent intent = new Intent(ManageTask.this, ChooseFeatureEmployee.class);
+            startActivity(intent);
+            finish();
+        }
+    }
+
+    private void moveToCreateTask(){
+        Intent intent = new Intent(ManageTask.this, CreateTask.class);
+        startActivity(intent);
+        finish();
+    }
+
     private TextView setDate (TextView textView){
         Date today = Calendar.getInstance().getTime();//getting date
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");//formating according to my need
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");//formating according to my need
         String date = formatter.format(today);
         textView.setText(date);
         return textView;

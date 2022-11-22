@@ -1,8 +1,11 @@
 package com.example.backofficer.activity;
 
+import android.app.AlertDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -22,12 +25,13 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class CreateTask extends AppCompatActivity implements View.OnClickListener{
     private CreateTaskBinding binding;
-    ArrayList<Information> informationArrayList;
-    ArrayList<Vehicle> vehicleArrayList;
     App app;
+
+    int hour, minute;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,9 +43,7 @@ public class CreateTask extends AppCompatActivity implements View.OnClickListene
 
         binding.btnDoneCreateTask.setOnClickListener(this);
         binding.ibBackPressCreateTask.setOnClickListener(this);
-
-        getInformation();
-        getVehicle();
+        binding.btnTimeStartCreateTask.setOnClickListener(this);
     }
 
     @Override
@@ -52,7 +54,27 @@ public class CreateTask extends AppCompatActivity implements View.OnClickListene
             onCreateSuccess();
         } else if(id == binding.ibBackPressCreateTask.getId()){
             moveToManageTask();
+        } else if(id == binding.btnTimeStartCreateTask.getId()){
+            pickTime();
         }
+    }
+
+    private void pickTime() {
+        TimePickerDialog.OnTimeSetListener onTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker view, int selectedHour, int selectedMinute) {
+                hour = selectedHour;
+                minute = selectedMinute;
+                binding.btnTimeStartCreateTask.setText(String.format(Locale.getDefault(), "%02d:%02d", hour, minute));
+            }
+        };
+
+        int style = AlertDialog.THEME_HOLO_DARK;
+
+        TimePickerDialog timePickerDialog = new TimePickerDialog(this, style, onTimeSetListener, hour, minute, true);
+
+        timePickerDialog.setTitle("Select Time");
+        timePickerDialog.show();
     }
 
     private void moveToManageTask() {
@@ -61,42 +83,6 @@ public class CreateTask extends AppCompatActivity implements View.OnClickListene
         intent.putExtra("sendingText", text);
         startActivity(intent);
         finish();
-    }
-
-    private void getInformation(){
-        app.dataBase
-                .collection("information")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if(task.isSuccessful()){
-                            for(QueryDocumentSnapshot documentSnapshot : task.getResult()){
-                                informationArrayList.add(documentSnapshot.toObject(Information.class));
-                            }
-                        } else {
-                            Toast.makeText(app, "Fail Loading Data", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-    }
-
-    private void getVehicle(){
-        app.dataBase
-                .collection("vehicle")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if(task.isSuccessful()){
-                            for(QueryDocumentSnapshot documentSnapshot : task.getResult()){
-                                vehicleArrayList.add(documentSnapshot.toObject(Vehicle.class));
-                            }
-                        } else {
-                            Toast.makeText(app, "Fail Loading Data", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
     }
 
     private void onCreateSuccess() {
