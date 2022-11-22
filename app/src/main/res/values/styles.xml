@@ -76,4 +76,12 @@
         <item name="android:layout_marginEnd">@dimen/marginEndRegister</item>
         <item name="android:textSize">@dimen/textSizeRegister</item>
     </style>
+
+    <style name="ListVehicle">
+        <item name="android:layout_marginTop">@dimen/marginTopListVehicle</item>
+        <item name="android:layout_marginBottom">@dimen/marginBotListVehicle</item>
+        <item name="android:layout_marginStart">@dimen/marginStartListVehicle</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center</item>
+    </style>
 </resources>

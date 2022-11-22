@@ -80,4 +80,8 @@
     <string name="textDialogDeleteAccount">Do you want to delete?</string>
     <string name="cancelDialogDeleteAccount">Cancel</string>
     <string name="okDialogDeleteAccount">Ok</string>
+
+    //Item List Vehicle
+    <string name="registerNumberItemListVehicle">Reg</string>
+    <string name="userItemListVehicle">User</string>
 </resources>

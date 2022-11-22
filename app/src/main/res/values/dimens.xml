@@ -84,4 +84,11 @@
     <dimen name="marginEndDialogDeleteAccount">15dp</dimen>
     <dimen name="paddingDialogDeleteAccount">12dp</dimen>
 
+    //List vehicle
+    <dimen name="marginTopListVehicle">10dp</dimen>
+    <dimen name="marginBotListVehicle">10dp</dimen>
+    <dimen name="marginStartListVehicle">10dp</dimen>
+    <dimen name="marginEndListVehicle">10dp</dimen>
+    <dimen name="marginListVehicle">10dp</dimen>
+
 </resources>

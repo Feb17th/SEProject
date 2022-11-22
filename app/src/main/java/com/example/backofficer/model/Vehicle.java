@@ -3,20 +3,25 @@ package com.example.backofficer.model;
 import java.io.Serializable;
 
 public class Vehicle implements Serializable {
-    String type;
+    int registerNumber;
     String user;
 
-    public Vehicle(String type, String user) {
-        this.type = type;
+    public Vehicle(){
+        this.registerNumber = 0;
+        this.user = "";
+    }
+
+    public Vehicle(int registerNumber, String user) {
+        this.registerNumber = registerNumber;
         this.user = user;
     }
 
-    public String getType() {
-        return type;
+    public int getRegisterNumber() {
+        return registerNumber;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setRegisterNumber(int registerNumber) {
+        this.registerNumber = registerNumber;
     }
 
     public String getUser() {

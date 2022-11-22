@@ -6,25 +6,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TimePicker;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.backofficer.App;
 import com.example.backofficer.databinding.CreateTaskBinding;
-import com.example.backofficer.model.Information;
-import com.example.backofficer.model.Vehicle;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentChange;
-import com.google.firebase.firestore.EventListener;
-import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
-
-import java.util.ArrayList;
 import java.util.Locale;
 
 public class CreateTask extends AppCompatActivity implements View.OnClickListener{
@@ -44,6 +31,7 @@ public class CreateTask extends AppCompatActivity implements View.OnClickListene
         binding.btnDoneCreateTask.setOnClickListener(this);
         binding.ibBackPressCreateTask.setOnClickListener(this);
         binding.btnTimeStartCreateTask.setOnClickListener(this);
+        binding.btnAssignVehicleCreateTask.setOnClickListener(this);
     }
 
     @Override
@@ -56,6 +44,8 @@ public class CreateTask extends AppCompatActivity implements View.OnClickListene
             moveToManageTask();
         } else if(id == binding.btnTimeStartCreateTask.getId()){
             pickTime();
+        } else if(id == binding.btnAssignVehicleCreateTask.getId()){
+            moveToListVehicle();
         }
     }
 
@@ -81,6 +71,12 @@ public class CreateTask extends AppCompatActivity implements View.OnClickListene
         String text = "CreateTask";
         Intent intent = new Intent(CreateTask.this, ManageTask.class);
         intent.putExtra("sendingText", text);
+        startActivity(intent);
+        finish();
+    }
+
+    private void moveToListVehicle(){
+        Intent intent = new Intent(CreateTask.this, ListVehicle.class);
         startActivity(intent);
         finish();
     }
