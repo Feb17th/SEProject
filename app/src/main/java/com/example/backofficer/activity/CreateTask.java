@@ -1,10 +1,12 @@
 package com.example.backofficer.activity;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.TimePicker;
 
 import androidx.annotation.Nullable;
@@ -12,6 +14,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.backofficer.App;
 import com.example.backofficer.databinding.CreateTaskBinding;
+import com.example.backofficer.model.Vehicle;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 public class CreateTask extends AppCompatActivity implements View.OnClickListener{
@@ -28,10 +35,18 @@ public class CreateTask extends AppCompatActivity implements View.OnClickListene
 
         app = (App) getApplication();
 
+        binding.tvTimeLineCreateTask.setText(setDate());
+
         binding.btnDoneCreateTask.setOnClickListener(this);
         binding.ibBackPressCreateTask.setOnClickListener(this);
         binding.btnTimeStartCreateTask.setOnClickListener(this);
         binding.btnAssignVehicleCreateTask.setOnClickListener(this);
+
+        String textReceiveFromAnotherActivity = getIntent().getStringExtra("sendingText");
+        if(textReceiveFromAnotherActivity.equals("ListVehicle")){
+            Vehicle vehicleFromListVehicle = (Vehicle) getIntent().getSerializableExtra("sendingVehicle");
+            binding.btnAssignVehicleCreateTask.setText(String.valueOf(vehicleFromListVehicle.getRegisterNumber()));
+        }
     }
 
     @Override
@@ -82,5 +97,12 @@ public class CreateTask extends AppCompatActivity implements View.OnClickListene
     }
 
     private void onCreateSuccess() {
+    }
+
+    private String setDate (){
+        Date today = Calendar.getInstance().getTime();//getting date
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");//formating according to my need
+        String date = formatter.format(today);
+        return date;
     }
 }

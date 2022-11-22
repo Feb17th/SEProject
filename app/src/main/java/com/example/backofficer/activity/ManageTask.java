@@ -186,7 +186,9 @@ public class ManageTask extends AppCompatActivity implements View.OnClickListene
     }
 
     private void moveToCreateTask(){
+        String text = "ManageTask";
         Intent intent = new Intent(ManageTask.this, CreateTask.class);
+        intent.putExtra("sendingText", text);
         startActivity(intent);
         finish();
     }

@@ -81,6 +81,11 @@
     <string name="cancelDialogDeleteAccount">Cancel</string>
     <string name="okDialogDeleteAccount">Ok</string>
 
+    //Dialog Add Vehicle
+    <string name="textDialogAddVehicle">Do you want to choose this vehicle?</string>
+    <string name="cancelDialogAddVehicle">Cancel</string>
+    <string name="okDialogAddVehicle">Ok</string>
+
     //Item List Vehicle
     <string name="registerNumberItemListVehicle">Reg</string>
     <string name="userItemListVehicle">User</string>

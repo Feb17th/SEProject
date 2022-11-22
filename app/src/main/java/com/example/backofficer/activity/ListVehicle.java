@@ -1,8 +1,15 @@
 package com.example.backofficer.activity;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -91,8 +98,56 @@ public class ListVehicle extends AppCompatActivity implements View.OnClickListen
         finish();
     }
 
+    private void moveToCreateTaskWithVehicle(Vehicle vehicle){
+        String text = "ListVehicle";
+        Intent intent = new Intent(ListVehicle.this, CreateTask.class);
+        intent.putExtra("sendingText", text);
+        intent.putExtra("sendingVehicle", vehicle);
+        startActivity(intent);
+        finish();
+    }
+
     @Override
     public void onClickChoose(Vehicle vehicle) {
+        openDialog(Gravity.CENTER, vehicle);
+    }
 
+    private void openDialog(int gravity, Vehicle vehicle) {
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dialog_add_vehicle);
+
+        Window window = dialog.getWindow();
+        if(window == null){
+            return;
+        }
+
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        WindowManager.LayoutParams windowAttributes = window.getAttributes();
+        windowAttributes.gravity = gravity;
+        window.setAttributes(windowAttributes);
+
+        dialog.setCancelable(true);
+
+        Button btnCancelDialogAddVehicle = dialog.findViewById(R.id.btnCancelDialogAddVehicle);
+        Button btnOkDialogAddVehicle = dialog.findViewById(R.id.btnOkDialogAddVehicle);
+
+        btnCancelDialogAddVehicle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        btnOkDialogAddVehicle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                moveToCreateTaskWithVehicle(vehicle);
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
     }
 }

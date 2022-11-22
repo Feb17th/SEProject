@@ -19,7 +19,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/timeLineCreateTask"
+            android:id="@+id/tvTimeLineCreateTask"
             style="@style/createTask"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

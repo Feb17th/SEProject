@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:padding="@dimen/paddingDialogDeleteAccount"
-        android:text="@string/textDialogDeleteAccount"
+        android:text="@string/textDialogAddVehicle"
         android:textColor="@color/redDialogDeleteAccount" />
 
     <LinearLayout
@@ -21,22 +21,22 @@
         android:padding="@dimen/paddingDialogDeleteAccount">
 
         <Button
-            android:id="@+id/btnCancelDialogDeleteAccount"
+            android:id="@+id/btnCancelDialogAddVehicle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/marginEndDialogDeleteAccount"
             android:layout_weight="1"
             android:background="@drawable/no_sharp_corner_gray_color"
-            android:text="@string/cancelDialogDeleteAccount" />
+            android:text="@string/cancelDialogAddVehicle" />
 
         <Button
-            android:id="@+id/btnOkDialogDeleteAccount"
+            android:id="@+id/btnOkDialogAddVehicle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/marginStartDialogDeleteAccount"
             android:layout_weight="1"
             android:background="@drawable/no_sharp_corner_login"
-            android:text="@string/okDialogDeleteAccount" />
+            android:text="@string/okDialogAddVehicle" />
 
     </LinearLayout>
 
