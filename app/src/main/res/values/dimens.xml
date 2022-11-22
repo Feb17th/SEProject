@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    //Login
+    <dimen name="textSizeLogin">15sp</dimen>
+    <dimen name="textSizeCompanyLogin">50sp</dimen>
+    <dimen name="marginTopLogin">15dp</dimen>
+    <dimen name="marginBotLogin">15dp</dimen>
+    <dimen name="marginStartLogin">40dp</dimen>
+    <dimen name="marginEndLogin">40dp</dimen>
+    <dimen name="paddingLogin">10dp</dimen>
+    <dimen name="paddingSignInLogin">20dp</dimen>
+
+    //View Information
+    <dimen name="textSizeViewInformation">15sp</dimen>
+    <dimen name="sizeCircleViewViewInformation">96dp</dimen>
+    <dimen name="marginTopViewInformation">25dp</dimen>
+    <dimen name="marginBotViewInformation">15dp</dimen>
+    <dimen name="marginStartViewInformation">20dp</dimen>
+    <dimen name="marginEndViewInformation">20dp</dimen>
+
+    //Manage Account
+    <dimen name="textSizeManageAccount">15sp</dimen>
+    <dimen name="textSizeViewManageAccount">20sp</dimen>
+    <dimen name="marginManageAccount">10dp</dimen>
+    <dimen name="marginTopManageAccount">10dp</dimen>
+    <dimen name="marginStartManageAccount">15dp</dimen>
+    <dimen name="marginEndManageAccount">15dp</dimen>
+    <dimen name="marginBotManageAccount">10dp</dimen>
+
+    //Manage Task
+    <dimen name="textSizeManageTask">15sp</dimen>
+    <dimen name="marginManageTask">10dp</dimen>
+    <dimen name="marginTopManageTask">10dp</dimen>
+    <dimen name="marginStartManageTask">12dp</dimen>
+    <dimen name="marginEndManageTask">12dp</dimen>
+    <dimen name="marginBotManageTask">10dp</dimen>
+    <dimen name="marginStartOfImageButtonManageTask">10dp</dimen>
+    
+    //Details
+    <dimen name="textSizeDetails">15sp</dimen>
+    <dimen name="textSizeDetailDetails">25sp</dimen>
+    <dimen name="marginDetails">10dp</dimen>
+    <dimen name="marginTopDetails">10dp</dimen>
+    <dimen name="marginTopDetailDetails">25dp</dimen>
+    <dimen name="marginTopImageDetails">45dp</dimen>
+    <dimen name="marginStartDetails">15dp</dimen>
+    <dimen name="marginStartBackPressDetails">15dp</dimen>
+    <dimen name="marginEndDetails">15dp</dimen>
+    <dimen name="marginBotDetails">10dp</dimen>
+    <dimen name="paddingDrawableDetails">20dp</dimen>
+
+    //Details Employee has many things the same as Details
+    <dimen name="marginStartButtonDetailsEmployee">10dp</dimen>
+
+    //Create Task
+    <dimen name="textSizeCreateTask">15sp</dimen>
+    <dimen name="textBigSizeCreateTask">40sp</dimen>
+    <dimen name="marginCreateTask">10dp</dimen>
+    <dimen name="marginTopCreateTask">10dp</dimen>
+    <dimen name="marginStartCreateTask">15dp</dimen>
+    <dimen name="marginEndCreateTask">15dp</dimen>
+    <dimen name="marginBotCreateTask">10dp</dimen>
+    <dimen name="paddingStartCreateTask">30dp</dimen>
+    <dimen name="paddingEndCreateTask">30dp</dimen>
+
+    //Choose Feature
+    <dimen name="textSizeChooseFeature">15sp</dimen>
+    <dimen name="marginTopChooseFeature">25dp</dimen>
+    <dimen name="marginStartChooseFeature">15dp</dimen>
+    <dimen name="marginEndChooseFeature">15dp</dimen>
+
+    //Register
+    <dimen name="textSizeRegister">15sp</dimen>
+    <dimen name="sizeCircleViewRegister">96dp</dimen>
+    <dimen name="marginTopRegister">10dp</dimen>
+    <dimen name="marginBotRegister">15dp</dimen>
+    <dimen name="marginStartRegister">20dp</dimen>
+    <dimen name="marginEndRegister">20dp</dimen>
+
+    //Dialog Delete Account
+    <dimen name="marginDialogDeleteAccount">15dp</dimen>
+    <dimen name="marginTopDialogDeleteAccount">15dp</dimen>
+    <dimen name="marginStartDialogDeleteAccount">15dp</dimen>
+    <dimen name="marginEndDialogDeleteAccount">15dp</dimen>
+    <dimen name="paddingDialogDeleteAccount">12dp</dimen>
+
+</resources>

@@ -1,0 +1,83 @@
+<resources>
+    <string name="app_name">BackOfficer</string>
+
+    //Login
+    <string name="emailLogin">Email</string>
+    <string name="passwordLogin">Password</string>
+    <string name="buttonSignInLogin">Sign In</string>
+    <string name="forgotPasswordLogin">Forgot Password?</string>
+    <string name="SECompany">SE Company</string>
+    
+    //View Information
+    <string name="firstNameViewInformation">First name</string>
+    <string name="lastNameViewInformation">Last name</string>
+    <string name="jobTypeViewInformation">Job type</string>
+    <string name="emailViewInformation">Email</string>
+    <string name="phoneNumberViewInformation">Phone number</string>
+    <string name="buttonEditProfileViewInformation">Edit Profile</string>
+    <string name="identityCardNumberViewInformation">Identity card number</string>
+
+    //Manage Account
+    <string name="manageAccount">Manage Account</string>
+    <string name="noManageAccount">No</string>
+    <string name="fullNameManageAccount">Full name</string>
+    <string name="jobTypeManageAccount">Job type</string>
+
+    //Manage Task
+    <string name="todayTaskManageTask">Today Task</string>
+    <string name="timeLineManageTask">October 15, 2022</string>
+    <string name="noManageTask">No</string>
+    <string name="descriptionManageTask">Description</string>
+    <string name="assignManageTask">Assign</string>
+    <string name="statusManageTask">Status</string>
+    <string name="addTaskManageTask">Add Task</string>
+
+    //Details
+    <string name="detailDetails">Detail</string>
+    <string name="descriptionDetails">Description</string>
+    <string name="timeDetails">Time</string>
+    <string name="vehicleDetails">Vehicle</string>
+    <string name="routeDetails">Route</string>
+    <string name="mcpDetails">MCP</string>
+    <string name="ownerDetails">Owner</string>
+    <string name="addOwnerDetails">Add owner</string>
+    <string name="editTaskDetails">Edit Task</string>
+
+    //Details Employee has many things the same as Details
+    <string name="checkInDetailsEmployee">Check In</string>
+    <string name="checkOutDetailsEmployee">Check Out</string>
+
+    //Create Task
+    <string name="createTask">Create Task</string>
+    <string name="timeLineCreateTask">17 October, 2022</string>
+    <string name="timeStartCreateTask">Time Start</string>
+    <string name="descriptionCreateTask">Description</string>
+    <string name="assignVehicleCreateTask">Assign Vehicle</string>
+    <string name="assignMCPCreateTask">Assign MCP</string>
+    <string name="employeeCreateTask">Employee</string>
+    <string name="doneCreateTask">Done</string>
+
+    //Choose Feature
+    <string name="viewInformationChooseFeature">View Information</string>
+    <string name="manageTaskChooseFeature">Manage Task</string>
+    <string name="manageAccountChooseFeature">Manage Account</string>
+    <string name="viewTaskChooseFeature">View Task</string>
+    <string name="signOutChooseFeature">Sign Out</string>
+
+    //Register
+    <string name="emailOfProjectRegister">Email of SE Project</string>
+    <string name="passwordRegister">Password</string>
+    <string name="rePasswordRegister">Type your password again</string>
+    <string name="firstNameRegister">First name</string>
+    <string name="lastNameRegister">Last name</string>
+    <string name="jobTypeRegister">Job type</string>
+    <string name="emailRegister">Email</string>
+    <string name="phoneNumberRegister">Phone number</string>
+    <string name="doneRegister">Done</string>
+    <string name="identityCardNumberRegister">Identity card number</string>
+
+    //Dialog Delete Account
+    <string name="textDialogDeleteAccount">Do you want to delete?</string>
+    <string name="cancelDialogDeleteAccount">Cancel</string>
+    <string name="okDialogDeleteAccount">Ok</string>
+</resources>

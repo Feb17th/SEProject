@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/greenGarbageChooseFeature"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btnViewInformationChooseFeatureEmployee"
+        style="@style/chooseFeature"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/no_sharp_corner_garbage_color"
+        android:text="@string/viewInformationChooseFeature" />
+
+    <Button
+        android:id="@+id/btnViewTaskChooseFeatureEmployee"
+        style="@style/chooseFeature"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/no_sharp_corner_garbage_color"
+        android:text="@string/viewTaskChooseFeature" />
+
+    <Button
+        android:id="@+id/btnSignOutChooseFeatureEmployee"
+        style="@style/chooseFeature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:background="@drawable/no_sharp_corner_garbage_color"
+        android:text="@string/signOutChooseFeature" />
+
+</LinearLayout>

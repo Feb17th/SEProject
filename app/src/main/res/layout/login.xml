@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/greenGarbage"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/SECompany"
+        android:textSize="@dimen/textSizeCompanyLogin"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/txtEmailLogin"
+        style="@style/login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/no_sharp_corner_login"
+        android:hint="@string/emailLogin"
+        android:padding="@dimen/paddingLogin"
+        android:textColor="@color/black" />
+
+    <EditText
+        android:id="@+id/txtPasswordLogin"
+        style="@style/login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/no_sharp_corner_login"
+        android:hint="@string/passwordLogin"
+        android:inputType="textPassword"
+        android:padding="@dimen/paddingLogin"
+        android:textColor="@color/black" />
+
+    <Button
+        android:id="@+id/btnSignIn"
+        style="@style/login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/no_sharp_corner_garbage_color"
+        android:padding="@dimen/paddingSignInLogin"
+        android:text="@string/buttonSignInLogin" />
+
+    <TextView
+        android:id="@+id/tvForgotPassword"
+        style="@style/login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/forgotPasswordLogin" />
+</LinearLayout>

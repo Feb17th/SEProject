@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/civPersonalRegister"
+        android:layout_width="@dimen/sizeCircleViewRegister"
+        android:layout_height="@dimen/sizeCircleViewRegister"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/marginTopRegister"
+        android:src="@drawable/personal_image_example" />
+
+    <EditText
+        android:id="@+id/txtEmailOfProjectRegister"
+        style="@style/register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/emailOfProjectRegister" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="@dimen/marginStartRegister"
+        android:layout_marginEnd="@dimen/marginEndRegister"
+        android:background="@color/lineRegister" />
+
+    <EditText
+        android:id="@+id/txtPasswordRegister"
+        style="@style/register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/passwordRegister"
+        android:inputType="textPassword" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="@dimen/marginStartRegister"
+        android:layout_marginEnd="@dimen/marginEndRegister"
+        android:background="@color/lineRegister" />
+
+    <EditText
+        android:id="@+id/txtRePasswordRegister"
+        style="@style/register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/rePasswordRegister"
+        android:inputType="textPassword" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="@dimen/marginStartRegister"
+        android:layout_marginEnd="@dimen/marginEndRegister"
+        android:background="@color/lineRegister" />
+
+    <EditText
+        android:id="@+id/txtFirstNameRegister"
+        style="@style/register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/firstNameRegister" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="@dimen/marginStartRegister"
+        android:layout_marginEnd="@dimen/marginEndRegister"
+        android:background="@color/lineRegister" />
+
+    <EditText
+        android:id="@+id/txtLastNameRegister"
+        style="@style/register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/lastNameRegister" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="@dimen/marginStartRegister"
+        android:layout_marginEnd="@dimen/marginEndRegister"
+        android:background="@color/lineRegister" />
+
+    <EditText
+        android:id="@+id/txtJobTypeRegister"
+        style="@style/register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/jobTypeRegister" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="@dimen/marginStartRegister"
+        android:layout_marginEnd="@dimen/marginEndRegister"
+        android:background="@color/lineRegister" />
+
+    <EditText
+        android:id="@+id/txtEmailRegister"
+        style="@style/register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/emailRegister" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="@dimen/marginStartRegister"
+        android:layout_marginEnd="@dimen/marginEndRegister"
+        android:background="@color/lineRegister" />
+
+    <EditText
+        android:id="@+id/txtPhoneNumberRegister"
+        style="@style/register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/phoneNumberRegister" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="@dimen/marginStartRegister"
+        android:layout_marginEnd="@dimen/marginEndRegister"
+        android:background="@color/lineRegister" />
+
+    <EditText
+        android:id="@+id/txtIdentityCardNumberRegister"
+        style="@style/register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/identityCardNumberRegister" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginTopRegister"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnDoneRegister"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marginStartRegister"
+            android:layout_weight="7"
+            android:background="@drawable/no_sharp_corner_garbage_color"
+            android:text="@string/doneRegister" />
+
+        <ImageButton
+            android:id="@+id/ibBackPressRegister"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/marginStartRegister"
+            android:layout_marginEnd="@dimen/marginEndRegister"
+            android:layout_weight="1"
+            android:background="@drawable/no_sharp_corner_back_icon"
+            android:src="@drawable/back_icon" />
+
+    </LinearLayout>
+</LinearLayout>

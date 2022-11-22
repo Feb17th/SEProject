@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/tvNumberItemManageAccount"
+        style="@style/itemManageAccount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@color/whiteManageAccount"
+        android:text="1" />
+
+    <TextView
+        android:id="@+id/tvNameItemManageAccount"
+        style="@style/itemManageAccount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        android:text="Huỳnh Bảo Tín"
+        android:gravity="left"/>
+
+    <TextView
+        android:id="@+id/tvJobTypeItemManageAccount"
+        style="@style/itemManageAccount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:text="Back Officer"
+        android:gravity="left"/>
+
+    <ImageButton
+        android:id="@+id/ibInfoItemManageAccount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_weight="1"
+        android:background="@color/white"
+        android:src="@drawable/info" />
+
+    <ImageButton
+        android:id="@+id/ibDeleteItemManageAccount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_weight="1"
+        android:background="@color/white"
+        android:src="@drawable/garbage_can" />
+
+</LinearLayout>

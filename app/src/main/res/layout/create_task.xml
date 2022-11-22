@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/createTask"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/createTask"
+            android:textColor="@color/greenGarbageCreateTask"
+            android:textSize="@dimen/textBigSizeCreateTask"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/timeLineCreateTask"
+            style="@style/createTask"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/timeLineCreateTask"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/textSizeCreateTask" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="50dp"
+        android:background="@color/grayCreateTask"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnTimeStartCreateTask"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/no_sharp_corner_white_color"
+                android:drawableTop="@drawable/time_start"
+                android:text="@string/timeStartCreateTask"
+                android:textSize="@dimen/textSizeCreateTask" />
+
+            <Button
+                android:id="@+id/btnAssignVehicleCreateTask"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/no_sharp_corner_white_color"
+                android:drawableTop="@drawable/vehicle_garbage_color"
+                android:text="@string/assignVehicleCreateTask"
+                android:textSize="@dimen/textSizeCreateTask" />
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/btnDescriptionCreateTask"
+            style="@style/createTaskFeature"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/no_sharp_corner_white_color"
+            android:drawableTop="@drawable/description"
+            android:gravity="center"
+            android:hint="@string/descriptionCreateTask"
+            android:textSize="@dimen/textSizeCreateTask" />
+
+
+        <Button
+            android:id="@+id/btnAssignMCPCreateTask"
+            style="@style/createTaskFeature"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/no_sharp_corner_white_color"
+            android:drawableTop="@drawable/location_pin_garbage_color"
+            android:text="@string/assignMCPCreateTask"
+            android:textSize="@dimen/textSizeCreateTask" />
+
+        <Button
+            android:id="@+id/btnEmployeeCreateTask"
+            style="@style/createTaskFeature"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/no_sharp_corner_white_color"
+            android:drawableTop="@drawable/employee_create_task"
+            android:text="@string/employeeCreateTask"
+            android:textSize="@dimen/textSizeCreateTask" />
+
+        <LinearLayout
+            style="@style/createTaskFeature"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnDoneCreateTask"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/marginStartCreateTask"
+                android:layout_weight="1"
+                android:background="@drawable/no_sharp_corner_garbage_color"
+                android:text="@string/doneCreateTask"
+                android:textColor="@color/whiteCreateTask"
+                android:textSize="@dimen/textSizeCreateTask" />
+
+            <ImageButton
+                android:id="@+id/ibBackPressCreateTask"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="6"
+                android:background="@drawable/no_sharp_corner_back_icon"
+                android:src="@drawable/back_icon" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

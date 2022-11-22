@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "821430221393",
+    "project_id": "seproject-27e26",
+    "storage_bucket": "seproject-27e26.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:821430221393:android:2301f4005ce6dd7d111670",
+        "android_client_info": {
+          "package_name": "com.example.backofficer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "821430221393-cqn2ece215vki4fgut5p84e2d27o0c6m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4auMK2kdu9Xy6pqNFxRIUWXsbaHedfjo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "821430221393-cqn2ece215vki4fgut5p84e2d27o0c6m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

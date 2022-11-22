@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/cvDetails"
+                style="@style/details"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/personal_image_example" />
+
+            <TextView
+                style="@style/details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/detailDetails"
+                android:textColor="@color/greenGarbageDetails"
+                android:textSize="@dimen/textSizeDetailDetails"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marginTopImageDetails"
+            android:layout_weight="1"
+            android:src="@drawable/detail" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginTopDetails"
+        android:background="@color/descriptionDetails"
+        android:gravity="center"
+        android:text="@string/descriptionDetails"
+        android:textSize="@dimen/textSizeDetails" />
+
+    <TextView
+        android:id="@+id/tvTimeDetails"
+        style="@style/detailDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/alarm"
+        android:drawablePadding="@dimen/paddingDrawableDetails"
+        android:gravity="center"
+        android:text="@string/timeDetails"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/textSizeDetails" />
+
+    <TextView
+        android:id="@+id/tvVehicleDetails"
+        style="@style/detailDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/vehicle"
+        android:drawablePadding="@dimen/paddingDrawableDetails"
+        android:gravity="center"
+        android:text="@string/vehicleDetails"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/textSizeDetails" />
+
+    <TextView
+        android:id="@+id/tvRouteDetails"
+        style="@style/detailDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/route"
+        android:drawablePadding="@dimen/paddingDrawableDetails"
+        android:gravity="center"
+        android:text="@string/routeDetails"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/textSizeDetails" />
+
+    <TextView
+        android:id="@+id/tvMCPDetails"
+        style="@style/detailDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/location_pin"
+        android:drawablePadding="@dimen/paddingDrawableDetails"
+        android:gravity="center"
+        android:text="@string/mcpDetails"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/textSizeDetails" />
+
+    <View
+        style="@style/detailDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:background="@android:color/black" />
+
+    <TextView
+        android:id="@+id/tvOwnerDetails"
+        style="@style/detailDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="17dp"
+        android:gravity="center"
+        android:text="@string/ownerDetails"
+        android:textColor="@android:color/black"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        style="@style/detailDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnEditTaskDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/no_sharp_corner_garbage_color"
+            android:text="@string/editTaskDetails" />
+
+        <ImageButton
+            android:id="@+id/ibBackPressDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/marginStartBackPressDetails"
+            android:layout_weight="5"
+            android:background="@drawable/no_sharp_corner_back_icon"
+            android:src="@drawable/back_icon" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="viewInformation">
+        <item name="android:layout_marginTop">@dimen/marginTopViewInformation</item>
+        <item name="android:layout_marginStart">@dimen/marginStartViewInformation</item>
+        <item name="android:layout_marginEnd">@dimen/marginEndViewInformation</item>
+        <item name="android:textSize">@dimen/textSizeViewInformation</item>
+    </style>
+
+    <style name="login">
+        <item name="android:layout_marginTop">@dimen/marginTopLogin</item>
+        <item name="android:layout_marginStart">@dimen/marginStartLogin</item>
+        <item name="android:layout_marginEnd">@dimen/marginEndLogin</item>
+        <item name="android:textSize">@dimen/textSizeLogin</item>
+    </style>
+
+    <style name="manageAccount">
+        <item name="android:layout_marginTop">@dimen/marginTopManageAccount</item>
+        <item name="android:layout_marginStart">@dimen/marginStartManageAccount</item>
+        <item name="android:layout_marginEnd">@dimen/marginEndManageAccount</item>
+    </style>
+
+    <style name="itemManageAccount">
+        <item name="android:layout_marginTop">@dimen/marginTopManageAccount</item>
+        <item name="android:layout_marginStart">@dimen/marginStartManageAccount</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="manageTask">
+        <item name="android:layout_marginTop">@dimen/marginTopManageAccount</item>
+        <item name="android:layout_marginStart">@dimen/marginStartManageAccount</item>
+        <item name="android:layout_marginEnd">@dimen/marginEndManageAccount</item>
+    </style>
+
+    <style name="itemManageTask">
+        <item name="android:layout_marginTop">@dimen/marginTopManageTask</item>
+        <item name="android:layout_marginStart">@dimen/marginStartManageTask</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="details">
+        <item name="android:layout_marginTop">@dimen/marginTopDetails</item>
+        <item name="android:layout_marginStart">@dimen/marginStartDetails</item>
+        <item name="android:layout_marginEnd">@dimen/marginEndDetails</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="detailDetails">
+        <item name="android:layout_marginTop">@dimen/marginTopDetailDetails</item>
+        <item name="android:layout_marginStart">@dimen/marginStartDetails</item>
+        <item name="android:layout_marginEnd">@dimen/marginEndDetails</item>
+    </style>
+
+    <style name="createTask">
+        <item name="android:layout_marginTop">@dimen/marginTopCreateTask</item>
+        <item name="android:layout_marginStart">@dimen/marginStartCreateTask</item>
+        <item name="android:layout_marginEnd">@dimen/marginEndCreateTask</item>
+    </style>
+    <style name="createTaskFeature">
+        <item name="android:layout_marginTop">50dp</item>
+        <item name="android:layout_marginStart">20dp</item>
+        <item name="android:layout_marginEnd">20dp</item>
+    </style>
+
+    <style name="chooseFeature">
+        <item name="android:layout_marginTop">@dimen/marginTopChooseFeature</item>
+        <item name="android:layout_marginStart">@dimen/marginStartChooseFeature</item>
+        <item name="android:layout_marginEnd">@dimen/marginEndChooseFeature</item>
+        <item name="android:textSize">@dimen/textSizeChooseFeature</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="register">
+        <item name="android:layout_marginTop">@dimen/marginTopRegister</item>
+        <item name="android:layout_marginStart">@dimen/marginStartRegister</item>
+        <item name="android:layout_marginEnd">@dimen/marginEndRegister</item>
+        <item name="android:textSize">@dimen/textSizeRegister</item>
+    </style>
+</resources>
