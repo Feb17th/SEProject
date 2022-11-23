@@ -86,7 +86,12 @@
     <string name="cancelDialogAddVehicle">Cancel</string>
     <string name="okDialogAddVehicle">Ok</string>
 
-    //Item List Vehicle
-    <string name="registerNumberItemListVehicle">Reg</string>
-    <string name="userItemListVehicle">User</string>
+    //List Vehicle
+    <string name="registerNumberListVehicle">Reg</string>
+    <string name="userListVehicle">User</string>
+
+    //List Employee
+    <string name="noListEmployee">No</string>
+    <string name="fullNameListEmployee">Full Name</string>
+    <string name="jobTypeListEmployee">Job Type</string>
 </resources>

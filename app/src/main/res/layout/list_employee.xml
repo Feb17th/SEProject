@@ -5,56 +5,63 @@
     android:orientation="vertical">
 
     <LinearLayout
-        style="@style/ListVehicle"
+        style="@style/ListEmployee"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/marginTopListVehicle"
-        android:layout_marginEnd="@dimen/marginEndListVehicle"
+        android:layout_marginTop="@dimen/marginTopListEmployee"
+        android:layout_marginEnd="@dimen/marginEndListEmployee"
         android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="5"
+            android:layout_weight="6"
             android:background="@drawable/no_sharp_corner_garbage_color"
             android:orientation="horizontal">
 
             <TextView
-                style="@style/ListVehicle"
+                style="@style/ListEmployee"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/registerNumberListVehicle" />
+                android:text="@string/noListEmployee" />
 
             <TextView
-                style="@style/ListVehicle"
+                style="@style/ListEmployee"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="4"
-                android:text="@string/userListVehicle" />
+                android:layout_weight="3"
+                android:text="@string/fullNameListEmployee" />
+
+            <TextView
+                style="@style/ListEmployee"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="@string/jobTypeListEmployee" />
 
         </LinearLayout>
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2" />
+            android:layout_weight="1" />
 
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvListVehicle"
-        style="@style/ListVehicle"
+        android:id="@+id/rvListEmployee"
+        style="@style/ListEmployee"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/marginEndListVehicle" />
+        android:layout_marginEnd="@dimen/marginEndListEmployee" />
 
     <ImageButton
-        android:id="@+id/ibBackPressListVehicle"
+        android:id="@+id/ibBackPressListEmployee"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
-        android:layout_margin="@dimen/marginListVehicle"
+        android:layout_margin="@dimen/marginListEmployee"
         android:background="@drawable/no_sharp_corner_back_icon"
         android:src="@drawable/back_icon" />
 

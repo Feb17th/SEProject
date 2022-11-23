@@ -6,7 +6,6 @@ import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.TimePicker;
 
 import androidx.annotation.Nullable;
@@ -14,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.backofficer.App;
 import com.example.backofficer.databinding.CreateTaskBinding;
+import com.example.backofficer.model.Information;
 import com.example.backofficer.model.Vehicle;
 
 import java.text.SimpleDateFormat;
@@ -26,6 +26,7 @@ public class CreateTask extends AppCompatActivity implements View.OnClickListene
     App app;
 
     int hour, minute;
+    String emailOfProject = "";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,11 +42,16 @@ public class CreateTask extends AppCompatActivity implements View.OnClickListene
         binding.ibBackPressCreateTask.setOnClickListener(this);
         binding.btnTimeStartCreateTask.setOnClickListener(this);
         binding.btnAssignVehicleCreateTask.setOnClickListener(this);
+        binding.btnEmployeeCreateTask.setOnClickListener(this);
 
         String textReceiveFromAnotherActivity = getIntent().getStringExtra("sendingText");
-        if(textReceiveFromAnotherActivity.equals("ListVehicle")){
+        if(textReceiveFromAnotherActivity.equals("ListVehicleWithVehicle")){
             Vehicle vehicleFromListVehicle = (Vehicle) getIntent().getSerializableExtra("sendingVehicle");
             binding.btnAssignVehicleCreateTask.setText(String.valueOf(vehicleFromListVehicle.getRegisterNumber()));
+        } else if(textReceiveFromAnotherActivity.equals("ListEmployeeWithInformation")){
+            Information informationFromListEmployee = (Information) getIntent().getSerializableExtra("sendingInformation");
+            binding.btnEmployeeCreateTask.setText(String.valueOf(informationFromListEmployee.getFullName()));
+            emailOfProject = informationFromListEmployee.getEmailOfProject();
         }
     }
 
@@ -61,6 +67,8 @@ public class CreateTask extends AppCompatActivity implements View.OnClickListene
             pickTime();
         } else if(id == binding.btnAssignVehicleCreateTask.getId()){
             moveToListVehicle();
+        } else if(id == binding.btnEmployeeCreateTask.getId()){
+            moveToListEmployee();
         }
     }
 
@@ -92,6 +100,12 @@ public class CreateTask extends AppCompatActivity implements View.OnClickListene
 
     private void moveToListVehicle(){
         Intent intent = new Intent(CreateTask.this, ListVehicle.class);
+        startActivity(intent);
+        finish();
+    }
+
+    private void moveToListEmployee() {
+        Intent intent = new Intent(CreateTask.this, ListEmployee.class);
         startActivity(intent);
         finish();
     }

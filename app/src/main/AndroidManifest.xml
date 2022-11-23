@@ -36,6 +36,7 @@
         <activity android:name=".activity.DetailsEmployee" />
         <activity android:name=".activity.CreateTask" />
         <activity android:name=".activity.ListVehicle" />
+        <activity android:name=".activity.ListEmployee" />
     </application>
 
 </manifest>

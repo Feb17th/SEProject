@@ -84,4 +84,12 @@
         <item name="android:layout_gravity">center</item>
         <item name="android:gravity">center</item>
     </style>
+
+    <style name="ListEmployee">
+        <item name="android:layout_marginTop">@dimen/marginTopListEmployee</item>
+        <item name="android:layout_marginBottom">@dimen/marginBotListEmployee</item>
+        <item name="android:layout_marginStart">@dimen/marginStartListEmployee</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center</item>
+    </style>
 </resources>

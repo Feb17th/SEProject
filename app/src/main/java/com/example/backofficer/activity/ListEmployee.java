@@ -11,6 +11,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -20,8 +21,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.backofficer.App;
 import com.example.backofficer.R;
-import com.example.backofficer.adapter.VehicleAdapter;
-import com.example.backofficer.model.Vehicle;
+import com.example.backofficer.adapter.EmployeeAdapter;
+import com.example.backofficer.model.Information;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestoreException;
@@ -30,39 +31,39 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
-public class ListVehicle extends AppCompatActivity implements View.OnClickListener, VehicleAdapter.VehicleClickListener{
-    RecyclerView rvListVehicle;
-    ArrayList<Vehicle> vehicleArrayList;
-    VehicleAdapter vehicleAdapter;
-    ImageButton ibBackPressListVehicle;
+public class ListEmployee extends AppCompatActivity implements View.OnClickListener, EmployeeAdapter.InformationClickListener {
+    RecyclerView rvListEmployee;
+    ArrayList<Information> informationArrayList;
+    EmployeeAdapter employeeAdapter;
+    ImageButton ibBackPressListEmployee;
     App app;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.list_vehicle);
+        setContentView(R.layout.list_employee);
 
-        ibBackPressListVehicle = findViewById(R.id.ibBackPressListVehicle);
+        ibBackPressListEmployee = findViewById(R.id.ibBackPressListEmployee);
 
-        rvListVehicle = findViewById(R.id.rvListVehicle);
-        rvListVehicle.setHasFixedSize(true);
-        rvListVehicle.setLayoutManager(new LinearLayoutManager(this));
+        rvListEmployee = findViewById(R.id.rvListEmployee);
+        rvListEmployee.setHasFixedSize(true);
+        rvListEmployee.setLayoutManager(new LinearLayoutManager(this));
 
-        vehicleArrayList = new ArrayList<>();
-        vehicleAdapter = new VehicleAdapter(vehicleArrayList, this);
-        rvListVehicle.setAdapter(vehicleAdapter);
+        informationArrayList = new ArrayList<>();
+        employeeAdapter = new EmployeeAdapter(informationArrayList, this);
+        rvListEmployee.setAdapter(employeeAdapter);
 
         app = (App) getApplication();
 
-        ibBackPressListVehicle.setOnClickListener(this);
-
-        loadVehicle();
+        ibBackPressListEmployee.setOnClickListener(this);
+        
+        loadEmployee();
     }
 
-    private void loadVehicle(){
+    private void loadEmployee() {
         app.dataBase
-                .collection("vehicle")
-                .orderBy("registerNumber", Query.Direction.ASCENDING)
+                .collection("information")
+                .orderBy("jobType", Query.Direction.ASCENDING)
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -71,13 +72,17 @@ public class ListVehicle extends AppCompatActivity implements View.OnClickListen
                             return;
                         }
 
+                        Information information;
                         for(DocumentChange dc : value.getDocumentChanges()){
                             if(dc.getType() == DocumentChange.Type.ADDED){
-                                vehicleArrayList.add(dc.getDocument().toObject(Vehicle.class));
+                                information = dc.getDocument().toObject(Information.class);
+                                if(checkRole(information.getEmailOfProject()).equals("employee")){
+                                    informationArrayList.add(information);
+                                }
                             }
                         }
 
-                        vehicleAdapter.notifyDataSetChanged();
+                        employeeAdapter.notifyDataSetChanged();
                     }
                 });
     }
@@ -86,34 +91,34 @@ public class ListVehicle extends AppCompatActivity implements View.OnClickListen
     public void onClick(View v) {
         int id = v.getId();
 
-        if(id == R.id.ibBackPressListVehicle){
+        if(id == R.id.ibBackPressListEmployee){
             moveToCreateTask();
         }
     }
 
     private void moveToCreateTask() {
-        String text = "ListVehicle";
-        Intent intent = new Intent(ListVehicle.this, CreateTask.class);
+        String text = "ListEmployee";
+        Intent intent = new Intent(ListEmployee.this, CreateTask.class);
         intent.putExtra("sendingText", text);
         startActivity(intent);
         finish();
     }
 
-    private void moveToCreateTaskWithVehicle(Vehicle vehicle){
-        String text = "ListVehicleWithVehicle";
-        Intent intent = new Intent(ListVehicle.this, CreateTask.class);
+    private void moveToCreateTaskWithInformation(Information information){
+        String text = "ListEmployeeWithInformation";
+        Intent intent = new Intent(ListEmployee.this, CreateTask.class);
         intent.putExtra("sendingText", text);
-        intent.putExtra("sendingVehicle", vehicle);
+        intent.putExtra("sendingInformation", information);
         startActivity(intent);
-        finish();
     }
 
     @Override
-    public void onClickChoose(Vehicle vehicle) {
-        openDialog(Gravity.CENTER, vehicle);
+    public void onClickChoose(Information information) {
+        openDialog(Gravity.CENTER, information);
     }
 
-    private void openDialog(int gravity, Vehicle vehicle) {
+    //Use the same xml with ListVehicle
+    private void openDialog(int gravity, Information information) {
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.dialog_add_vehicle);
@@ -132,8 +137,12 @@ public class ListVehicle extends AppCompatActivity implements View.OnClickListen
 
         dialog.setCancelable(true);
 
+        TextView tvDescriptionDialog = dialog.findViewById(R.id.tvDescriptionDialog);
         Button btnCancelDialogAddVehicle = dialog.findViewById(R.id.btnCancelDialogAddVehicle);
         Button btnOkDialogAddVehicle = dialog.findViewById(R.id.btnOkDialogAddVehicle);
+
+        String chosenText = "Do you want to choose this employee?";
+        tvDescriptionDialog.setText(chosenText);
 
         btnCancelDialogAddVehicle.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -144,11 +153,22 @@ public class ListVehicle extends AppCompatActivity implements View.OnClickListen
         btnOkDialogAddVehicle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                moveToCreateTaskWithVehicle(vehicle);
+                moveToCreateTaskWithInformation(information);
                 dialog.dismiss();
             }
         });
 
         dialog.show();
+    }
+
+    private String checkRole(String EmailOfProject){
+        String result = "";
+        if(EmailOfProject == null) return result;
+        if(EmailOfProject.charAt(0) == 'b' && EmailOfProject.charAt(1) == 'o'){
+            result = "backOfficer";
+        } else {
+            result = "employee";
+        }
+        return result;
     }
 }

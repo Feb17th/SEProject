@@ -91,4 +91,11 @@
     <dimen name="marginEndListVehicle">10dp</dimen>
     <dimen name="marginListVehicle">10dp</dimen>
 
+    //List employee
+    <dimen name="marginTopListEmployee">10dp</dimen>
+    <dimen name="marginBotListEmployee">10dp</dimen>
+    <dimen name="marginStartListEmployee">10dp</dimen>
+    <dimen name="marginEndListEmployee">10dp</dimen>
+    <dimen name="marginListEmployee">10dp</dimen>
+
 </resources>
