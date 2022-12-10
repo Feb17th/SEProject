@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.backofficer.R;
+import com.example.backofficer.VehicleClickListener;
 import com.example.backofficer.activity.ListVehicle;
 import com.example.backofficer.model.Vehicle;
 
@@ -23,10 +24,6 @@ public class VehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.ViewHold
     public VehicleAdapter(ArrayList<Vehicle> vehicleArrayList, VehicleClickListener vehicleClickListener) {
         this.vehicleArrayList = vehicleArrayList;
         this.vehicleClickListener = vehicleClickListener;
-    }
-
-    public interface VehicleClickListener{
-        void onClickChoose(Vehicle vehicle);
     }
 
     @NonNull

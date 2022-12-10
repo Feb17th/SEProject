@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.backofficer.App;
 import com.example.backofficer.R;
+import com.example.backofficer.VehicleClickListener;
 import com.example.backofficer.adapter.VehicleAdapter;
 import com.example.backofficer.model.Vehicle;
 import com.google.firebase.firestore.DocumentChange;
@@ -30,7 +31,21 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
-public class ListVehicle extends AppCompatActivity implements View.OnClickListener, VehicleAdapter.VehicleClickListener{
+public class ListVehicle extends AppCompatActivity implements View.OnClickListener, VehicleClickListener {
+    /*
+    *************************************
+    This class is not using.
+    Instead, i use ListVehicleFragment
+    *************************************
+    *************************************
+    This class is not using.
+    Instead, i use ListVehicleFragment
+    *************************************
+    *************************************
+    This class is not using.
+    Instead, i use ListVehicleFragment
+    *************************************
+    */
     RecyclerView rvListVehicle;
     ArrayList<Vehicle> vehicleArrayList;
     VehicleAdapter vehicleAdapter;
