@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
@@ -21,9 +20,12 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.backofficer.App;
+import com.example.backofficer.InformationClickListener;
 import com.example.backofficer.R;
 import com.example.backofficer.VehicleClickListener;
 import com.example.backofficer.databinding.CreateTaskBinding;
+import com.example.backofficer.fragment.ListEmployee;
+import com.example.backofficer.fragment.ListVehicle;
 import com.example.backofficer.model.Information;
 import com.example.backofficer.model.Vehicle;
 import com.google.firebase.firestore.DocumentChange;
@@ -83,10 +85,9 @@ public class CreateTask extends AppCompatActivity implements View.OnClickListene
         } else if(id == binding.btnTimeStartCreateTask.getId()){
             pickTime();
         } else if(id == binding.btnAssignVehicleCreateTask.getId()){
-//            moveToListVehicle();
             openVehicleBottomSheetFragment();
         } else if(id == binding.btnEmployeeCreateTask.getId()){
-            moveToListEmployee();
+            openEmployeeBottomSheetFragment();
         }
     }
 
@@ -134,55 +135,73 @@ public class CreateTask extends AppCompatActivity implements View.OnClickListene
         This line is used to run vehicleArrayList, if you delete this line, vehicleArrayList will not run.
         I don't know the reason.
         */
-        String temp = checkEmpty(vehicleArrayList);
+        String temp = checkEmptyVehicle(vehicleArrayList);
         // ------------------------------------
 
-        ListVehicleFragment listVehicleFragment = new ListVehicleFragment(vehicleArrayList, new VehicleClickListener() {
+        ListVehicle listVehicle = new ListVehicle(vehicleArrayList, new VehicleClickListener() {
             @Override
             public void onClickChoose(Vehicle vehicle) {
-                openDialog(Gravity.CENTER, vehicle);
+                openDialogListVehicle(Gravity.CENTER, vehicle);
             }
         });
-        listVehicleFragment.show(getSupportFragmentManager(), listVehicleFragment.getTag());
+        listVehicle.show(getSupportFragmentManager(), listVehicle.getTag());
     }
 
-    private String checkEmpty(ArrayList<Vehicle> arrayList){
+    private void openEmployeeBottomSheetFragment() {
+        ArrayList<Information> informationArrayList = new ArrayList<>();
+        app.dataBase
+                .collection("information")
+                .orderBy("jobType", Query.Direction.ASCENDING)
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                        if(error != null){
+                            Toast.makeText(app, "Fail Loading Data", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+
+                        Information information;
+                        for(DocumentChange dc : value.getDocumentChanges()){
+                            if(dc.getType() == DocumentChange.Type.ADDED){
+                                information = dc.getDocument().toObject(Information.class);
+                                if(checkRole(information.getEmailOfProject()).equals("employee")){
+                                    informationArrayList.add(information);
+                                }
+                            }
+                        }
+                    }
+                });
+
+        // ------------------------------------
+        /*
+        This line is used to run informationArrayList, if you delete this line, informationArrayList will not run.
+        I don't know the reason.
+        */
+        String temp = checkEmptyEmployee(informationArrayList);
+        // ------------------------------------
+
+        ListEmployee listEmployee = new ListEmployee(informationArrayList, new InformationClickListener() {
+            @Override
+            public void onClickChoose(Information information) {
+                openDiaLogListEmployee(Gravity.CENTER, information);
+            }
+        });
+        listEmployee.show(getSupportFragmentManager(), listEmployee.getTag());
+    }
+
+    private String checkEmptyVehicle(ArrayList<Vehicle> arrayList){
         if(arrayList.isEmpty()){
             return "true";
         } else return "false";
     }
 
-    private void moveToManageTask() {
-        String text = "CreateTask";
-        Intent intent = new Intent(CreateTask.this, ManageTask.class);
-        intent.putExtra("sendingText", text);
-        startActivity(intent);
-        finish();
+    private String checkEmptyEmployee(ArrayList<Information> arrayList){
+        if(arrayList.isEmpty()){
+            return "true";
+        } else return "false";
     }
 
-    private void moveToListVehicle(){
-        Intent intent = new Intent(CreateTask.this, ListVehicle.class);
-        startActivity(intent);
-        finish();
-    }
-
-    private void moveToListEmployee() {
-        Intent intent = new Intent(CreateTask.this, ListEmployee.class);
-        startActivity(intent);
-        finish();
-    }
-
-    private void onCreateSuccess() {
-    }
-
-    private String setDate (){
-        Date today = Calendar.getInstance().getTime();//getting date
-        @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");//formating according to my need
-        String date = formatter.format(today);
-        return date;
-    }
-
-    private void openDialog(int gravity, Vehicle vehicle) {
+    private void openDialogListVehicle(int gravity, Vehicle vehicle) {
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.dialog_add_vehicle);
@@ -219,5 +238,73 @@ public class CreateTask extends AppCompatActivity implements View.OnClickListene
         });
 
         dialog.show();
+    }
+
+    private void openDiaLogListEmployee(int gravity, Information information){
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dialog_add_employee);
+
+        Window window = dialog.getWindow();
+        if(window == null){
+            return;
+        }
+
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        WindowManager.LayoutParams windowAttributes = window.getAttributes();
+        windowAttributes.gravity = gravity;
+        window.setAttributes(windowAttributes);
+
+        dialog.setCancelable(true);
+
+        Button btnCancelDialogAddEmployee = dialog.findViewById(R.id.btnCancelDialogAddEmployee);
+        Button btnOkDialogAddEmployee = dialog.findViewById(R.id.btnOkDialogAddEmployee);
+
+        btnCancelDialogAddEmployee.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        btnOkDialogAddEmployee.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                binding.btnEmployeeCreateTask.setText(String.valueOf(information.getFullName()));
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+    }
+
+    private void moveToManageTask() {
+        String text = "CreateTask";
+        Intent intent = new Intent(CreateTask.this, ManageTask.class);
+        intent.putExtra("sendingText", text);
+        startActivity(intent);
+        finish();
+    }
+
+    private void onCreateSuccess() {
+    }
+
+    private String setDate (){
+        Date today = Calendar.getInstance().getTime();//getting date
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");//formating according to my need
+        String date = formatter.format(today);
+        return date;
+    }
+
+    private String checkRole(String EmailOfProject){
+        String result = "";
+        if(EmailOfProject == null) return result;
+        if(EmailOfProject.charAt(0) == 'b' && EmailOfProject.charAt(1) == 'o'){
+            result = "backOfficer";
+        } else {
+            result = "employee";
+        }
+        return result;
     }
 }

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/marginDialogDeleteAccount"
+    android:background="@drawable/no_sharp_corner_white_color"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="@dimen/paddingDialogDeleteAccount"
+        android:text="@string/textDialogAddEmployee"
+        android:textColor="@color/redDialogDeleteAccount" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/paddingDialogDeleteAccount">
+
+        <Button
+            android:id="@+id/btnCancelDialogAddEmployee"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/marginEndDialogDeleteAccount"
+            android:layout_weight="1"
+            android:background="@drawable/no_sharp_corner_gray_color"
+            android:text="@string/cancelDialogAddVehicle" />
+
+        <Button
+            android:id="@+id/btnOkDialogAddEmployee"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marginStartDialogDeleteAccount"
+            android:layout_weight="1"
+            android:background="@drawable/no_sharp_corner_login"
+            android:text="@string/okDialogAddVehicle" />
+
+    </LinearLayout>
+
+</LinearLayout>

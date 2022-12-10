@@ -1,4 +1,4 @@
-package com.example.backofficer.activity;
+package com.example.backofficer.fragment;
 
 import android.app.Dialog;
 import android.os.Bundle;
@@ -19,13 +19,13 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import java.util.ArrayList;
 
-public class ListVehicleFragment extends BottomSheetDialogFragment {
+public class ListVehicle extends BottomSheetDialogFragment {
     ArrayList<Vehicle> vehicleArrayList;
     VehicleClickListener vehicleClickListener;
-    RecyclerView rvListVehicleFragment;
+    RecyclerView rvListVehicle;
     VehicleAdapter adapter;
 
-    public ListVehicleFragment(ArrayList<Vehicle> vehicleArrayList, VehicleClickListener vehicleClickListener) {
+    public ListVehicle(ArrayList<Vehicle> vehicleArrayList, VehicleClickListener vehicleClickListener) {
         this.vehicleArrayList = vehicleArrayList;
         this.vehicleClickListener = vehicleClickListener;
     }
@@ -35,14 +35,14 @@ public class ListVehicleFragment extends BottomSheetDialogFragment {
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         BottomSheetDialog bottomSheetDialog = (BottomSheetDialog) super.onCreateDialog(savedInstanceState);
 
-        View view = LayoutInflater.from(getContext()).inflate(R.layout.list_vehicle_fragment, null);
+        View view = LayoutInflater.from(getContext()).inflate(R.layout.list_vehicle, null);
         bottomSheetDialog.setContentView(view);
 
-        rvListVehicleFragment = view.findViewById(R.id.rvListVehicleFragment);
-        rvListVehicleFragment.setLayoutManager(new LinearLayoutManager(getContext()));
+        rvListVehicle = view.findViewById(R.id.rvListVehicle);
+        rvListVehicle.setLayoutManager(new LinearLayoutManager(getContext()));
 
         adapter = new VehicleAdapter(vehicleArrayList, vehicleClickListener);
-        rvListVehicleFragment.setAdapter(adapter);
+        rvListVehicle.setAdapter(adapter);
 
         return bottomSheetDialog;
     }

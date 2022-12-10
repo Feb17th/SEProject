@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.backofficer.R;
 import com.example.backofficer.VehicleClickListener;
-import com.example.backofficer.activity.ListVehicle;
 import com.example.backofficer.model.Vehicle;
 
 import java.util.ArrayList;

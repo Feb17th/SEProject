@@ -56,13 +56,4 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/marginEndListEmployee" />
 
-    <ImageButton
-        android:id="@+id/ibBackPressListEmployee"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:layout_margin="@dimen/marginListEmployee"
-        android:background="@drawable/no_sharp_corner_back_icon"
-        android:src="@drawable/back_icon" />
-
 </LinearLayout>

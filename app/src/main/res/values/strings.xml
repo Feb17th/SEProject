@@ -86,6 +86,9 @@
     <string name="cancelDialogAddVehicle">Cancel</string>
     <string name="okDialogAddVehicle">Ok</string>
 
+    //Dialog Add Employee\
+    <string name="textDialogAddEmployee">Do you want to choose this person?</string>
+
     //List Vehicle
     <string name="registerNumberListVehicle">Reg</string>
     <string name="userListVehicle">User</string>

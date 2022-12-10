@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.backofficer.InformationClickListener;
 import com.example.backofficer.R;
 import com.example.backofficer.model.Information;
 
@@ -22,10 +23,6 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.ViewHo
     public EmployeeAdapter(ArrayList<Information> informationArrayList, InformationClickListener informationClickListener) {
         this.informationArrayList = informationArrayList;
         this.informationClickListener = informationClickListener;
-    }
-
-    public interface InformationClickListener{
-        void onClickChoose(Information information);
     }
 
     @NonNull

@@ -24,6 +24,7 @@
         <entry key="..\:/Users/Acer/Downloads/Code/ProjectSE/BackOfficer/app/src/main/res/layout/create_task.xml" value="0.25" />
         <entry key="..\:/Users/Acer/Downloads/Code/ProjectSE/BackOfficer/app/src/main/res/layout/details.xml" value="0.25" />
         <entry key="..\:/Users/Acer/Downloads/Code/ProjectSE/BackOfficer/app/src/main/res/layout/details_employee.xml" value="0.25" />
+        <entry key="..\:/Users/Acer/Downloads/Code/ProjectSE/BackOfficer/app/src/main/res/layout/dialog_add_employee.xml" value="0.22402736212056434" />
         <entry key="..\:/Users/Acer/Downloads/Code/ProjectSE/BackOfficer/app/src/main/res/layout/dialog_add_vehicle.xml" value="0.22402736212056434" />
         <entry key="..\:/Users/Acer/Downloads/Code/ProjectSE/BackOfficer/app/src/main/res/layout/dialog_delete_account.xml" value="0.271875" />
         <entry key="..\:/Users/Acer/Downloads/Code/ProjectSE/BackOfficer/app/src/main/res/layout/item_information.xml" value="0.25" />
@@ -33,6 +34,7 @@
         <entry key="..\:/Users/Acer/Downloads/Code/ProjectSE/BackOfficer/app/src/main/res/layout/item_manage_task.xml" value="0.25" />
         <entry key="..\:/Users/Acer/Downloads/Code/ProjectSE/BackOfficer/app/src/main/res/layout/item_view_information.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Acer/Downloads/Code/ProjectSE/BackOfficer/app/src/main/res/layout/list_employee.xml" value="0.22402736212056434" />
+        <entry key="..\:/Users/Acer/Downloads/Code/ProjectSE/BackOfficer/app/src/main/res/layout/list_employee_fragment.xml" value="0.22402736212056434" />
         <entry key="..\:/Users/Acer/Downloads/Code/ProjectSE/BackOfficer/app/src/main/res/layout/list_vehicle.xml" value="0.2231722958529286" />
         <entry key="..\:/Users/Acer/Downloads/Code/ProjectSE/BackOfficer/app/src/main/res/layout/list_vehicle_fragment.xml" value="0.22402736212056434" />
         <entry key="..\:/Users/Acer/Downloads/Code/ProjectSE/BackOfficer/app/src/main/res/layout/login.xml" value="0.33" />
