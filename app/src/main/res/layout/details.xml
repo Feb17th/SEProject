@@ -44,13 +44,15 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/tvDescriptionDetails"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/marginTopDetails"
         android:background="@color/descriptionDetails"
         android:gravity="center"
         android:text="@string/descriptionDetails"
-        android:textSize="@dimen/textSizeDetails" />
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tvTimeDetails"
@@ -124,19 +126,28 @@
 
         <Button
             android:id="@+id/btnEditTaskDetails"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
             android:background="@drawable/no_sharp_corner_garbage_color"
             android:text="@string/editTaskDetails" />
 
+        <Button
+            android:id="@+id/btnDeleteDetails"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="15dp"
+            android:layout_weight="2"
+            android:background="@drawable/no_sharp_corner_garbage_color"
+            android:text="@string/deleteDetails" />
+
         <ImageButton
             android:id="@+id/ibBackPressDetails"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginStart="@dimen/marginStartBackPressDetails"
-            android:layout_weight="5"
+            android:layout_weight="1"
             android:background="@drawable/no_sharp_corner_back_icon"
             android:src="@drawable/back_icon" />
 

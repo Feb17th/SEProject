@@ -42,6 +42,7 @@
     <string name="ownerDetails">Owner</string>
     <string name="addOwnerDetails">Add owner</string>
     <string name="editTaskDetails">Edit Task</string>
+    <string name="deleteDetails">Delete</string>
 
     //Details Employee has many things the same as Details
     <string name="checkInDetailsEmployee">Check In</string>
@@ -86,8 +87,14 @@
     <string name="cancelDialogAddVehicle">Cancel</string>
     <string name="okDialogAddVehicle">Ok</string>
 
-    //Dialog Add Employee\
+    //Dialog Add Employee
     <string name="textDialogAddEmployee">Do you want to choose this person?</string>
+
+    //Dialog Delete Task
+    <string name="textDialogDeleteTask">Do you want to delete this task?</string>
+
+    //Dialog Add MCP
+    <string name="textDialogAddMCP">Do you want to choose this mcp?</string>
 
     //List Vehicle
     <string name="registerNumberListVehicle">Reg</string>
@@ -97,4 +104,8 @@
     <string name="noListEmployee">No</string>
     <string name="fullNameListEmployee">Full Name</string>
     <string name="jobTypeListEmployee">Job Type</string>
+
+    //List MCP
+    <string name="noListMCP">No</string>
+    <string name="locationListMCP">Location</string>
 </resources>

@@ -31,8 +31,8 @@
     <dimen name="textSizeManageTask">15sp</dimen>
     <dimen name="marginManageTask">10dp</dimen>
     <dimen name="marginTopManageTask">10dp</dimen>
-    <dimen name="marginStartManageTask">12dp</dimen>
-    <dimen name="marginEndManageTask">12dp</dimen>
+    <dimen name="marginStartManageTask">10dp</dimen>
+    <dimen name="marginEndManageTask">10dp</dimen>
     <dimen name="marginBotManageTask">10dp</dimen>
     <dimen name="marginStartOfImageButtonManageTask">10dp</dimen>
     

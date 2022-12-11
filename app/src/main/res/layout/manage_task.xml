@@ -48,7 +48,9 @@
     </LinearLayout>
 
     <LinearLayout
-        style="@style/manageTask"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -56,7 +58,7 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="7"
+            android:layout_weight="8"
             android:background="@drawable/no_sharp_corner_garbage_color"
             android:orientation="horizontal">
 
@@ -76,7 +78,7 @@
                 android:layout_marginStart="@dimen/marginStartManageTask"
                 android:layout_marginTop="@dimen/marginTopManageTask"
                 android:layout_marginBottom="@dimen/marginBotManageTask"
-                android:layout_weight="3"
+                android:layout_weight="5"
                 android:gravity="center"
                 android:text="@string/descriptionManageTask" />
 
@@ -85,19 +87,9 @@
                 android:layout_height="match_parent"
                 android:layout_marginStart="@dimen/marginStartManageTask"
                 android:layout_marginTop="@dimen/marginTopManageTask"
-                android:layout_marginBottom="@dimen/marginBotManageTask"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/assignManageTask" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="@dimen/marginStartManageTask"
-                android:layout_marginTop="@dimen/marginTopManageTask"
                 android:layout_marginEnd="@dimen/marginEndManageTask"
                 android:layout_marginBottom="@dimen/marginBotManageTask"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:gravity="center"
                 android:text="@string/statusManageTask" />
 
@@ -106,7 +98,7 @@
         <ImageView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1" />
+            android:layout_weight="2" />
 
     </LinearLayout>
 

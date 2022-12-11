@@ -16,18 +16,25 @@ import android.widget.Button;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.backofficer.App;
 import com.example.backofficer.InformationClickListener;
+import com.example.backofficer.MCPClickListener;
 import com.example.backofficer.R;
 import com.example.backofficer.VehicleClickListener;
 import com.example.backofficer.databinding.CreateTaskBinding;
 import com.example.backofficer.fragment.ListEmployee;
+import com.example.backofficer.fragment.ListMCP;
 import com.example.backofficer.fragment.ListVehicle;
 import com.example.backofficer.model.Information;
+import com.example.backofficer.model.MCP;
+import com.example.backofficer.model.Task;
 import com.example.backofficer.model.Vehicle;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestoreException;
@@ -62,16 +69,7 @@ public class CreateTask extends AppCompatActivity implements View.OnClickListene
         binding.btnTimeStartCreateTask.setOnClickListener(this);
         binding.btnAssignVehicleCreateTask.setOnClickListener(this);
         binding.btnEmployeeCreateTask.setOnClickListener(this);
-
-        String textReceiveFromAnotherActivity = getIntent().getStringExtra("sendingText");
-        if(textReceiveFromAnotherActivity.equals("ListVehicleWithVehicle")){
-            Vehicle vehicleFromListVehicle = (Vehicle) getIntent().getSerializableExtra("sendingVehicle");
-            binding.btnAssignVehicleCreateTask.setText(String.valueOf(vehicleFromListVehicle.getRegisterNumber()));
-        } else if(textReceiveFromAnotherActivity.equals("ListEmployeeWithInformation")){
-            Information informationFromListEmployee = (Information) getIntent().getSerializableExtra("sendingInformation");
-            binding.btnEmployeeCreateTask.setText(String.valueOf(informationFromListEmployee.getFullName()));
-            emailOfProject = informationFromListEmployee.getEmailOfProject();
-        }
+        binding.btnAssignMCPCreateTask.setOnClickListener(this);
     }
 
     @Override
@@ -79,7 +77,7 @@ public class CreateTask extends AppCompatActivity implements View.OnClickListene
         int id = v.getId();
 
         if(id == binding.btnDoneCreateTask.getId()){
-            onCreateSuccess();
+            onSuccess();
         } else if(id == binding.ibBackPressCreateTask.getId()){
             moveToManageTask();
         } else if(id == binding.btnTimeStartCreateTask.getId()){
@@ -88,6 +86,8 @@ public class CreateTask extends AppCompatActivity implements View.OnClickListene
             openVehicleBottomSheetFragment();
         } else if(id == binding.btnEmployeeCreateTask.getId()){
             openEmployeeBottomSheetFragment();
+        } else if(id == binding.btnAssignMCPCreateTask.getId()){
+            openMCPBottomSheetFragment();
         }
     }
 
@@ -189,6 +189,44 @@ public class CreateTask extends AppCompatActivity implements View.OnClickListene
         listEmployee.show(getSupportFragmentManager(), listEmployee.getTag());
     }
 
+    private void openMCPBottomSheetFragment(){
+        ArrayList<MCP> mcpArrayList = new ArrayList<>();
+        app.dataBase
+                .collection("mcp")
+                .orderBy("mcp", Query.Direction.ASCENDING)
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                        if(error != null){
+                            Toast.makeText(app, "Fail Loading Data", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+
+                        for(DocumentChange dc : value.getDocumentChanges()){
+                            if(dc.getType() == DocumentChange.Type.ADDED){
+                                mcpArrayList.add(dc.getDocument().toObject(MCP.class));
+                            }
+                        }
+                    }
+                });
+
+        // ------------------------------------
+        /*
+        This line is used to run vehicleArrayList, if you delete this line, vehicleArrayList will not run.
+        I don't know the reason.
+        */
+        String temp = checkEmptyMCP(mcpArrayList);
+        // ------------------------------------
+
+        ListMCP listMCP = new ListMCP(mcpArrayList, new MCPClickListener() {
+            @Override
+            public void onClickChoose(MCP mcp) {
+                openDialogListMCP(Gravity.CENTER, mcp);
+            }
+        });
+        listMCP.show(getSupportFragmentManager(), listMCP.getTag());
+    }
+
     private String checkEmptyVehicle(ArrayList<Vehicle> arrayList){
         if(arrayList.isEmpty()){
             return "true";
@@ -196,6 +234,12 @@ public class CreateTask extends AppCompatActivity implements View.OnClickListene
     }
 
     private String checkEmptyEmployee(ArrayList<Information> arrayList){
+        if(arrayList.isEmpty()){
+            return "true";
+        } else return "false";
+    }
+
+    private String checkEmptyMCP(ArrayList<MCP> arrayList){
         if(arrayList.isEmpty()){
             return "true";
         } else return "false";
@@ -272,6 +316,46 @@ public class CreateTask extends AppCompatActivity implements View.OnClickListene
             @Override
             public void onClick(View v) {
                 binding.btnEmployeeCreateTask.setText(String.valueOf(information.getFullName()));
+                emailOfProject = information.getEmailOfProject();
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+    }
+
+    private void openDialogListMCP(int gravity, MCP mcp){
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dialog_add_mcp);
+
+        Window window = dialog.getWindow();
+        if(window == null){
+            return;
+        }
+
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        WindowManager.LayoutParams windowAttributes = window.getAttributes();
+        windowAttributes.gravity = gravity;
+        window.setAttributes(windowAttributes);
+
+        dialog.setCancelable(true);
+
+        Button btnCancelDialogAddMCP = dialog.findViewById(R.id.btnCancelDialogAddMCP);
+        Button btnOkDialogAddMCP = dialog.findViewById(R.id.btnOkDialogAddMCP);
+
+        btnCancelDialogAddMCP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        btnOkDialogAddMCP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                binding.btnAssignMCPCreateTask.setText(String.valueOf(mcp.getMcp()));
                 dialog.dismiss();
             }
         });
@@ -287,7 +371,53 @@ public class CreateTask extends AppCompatActivity implements View.OnClickListene
         finish();
     }
 
-    private void onCreateSuccess() {
+    private void saveDataToDatabase() {
+        Task task = new Task(
+                binding.btnEmployeeCreateTask.getText().toString().trim(),
+                binding.btnDescriptionCreateTask.getText().toString().trim(),
+                binding.btnTimeStartCreateTask.getText().toString().trim(),
+                binding.btnAssignVehicleCreateTask.getText().toString().trim(),
+                binding.btnAssignMCPCreateTask.getText().toString().trim(),
+                emailOfProject,
+                "Working"
+        );
+        app.dataBase
+                .collection("task")
+                .document(binding.btnDescriptionCreateTask.getText().toString().trim())
+                .set(task)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+
+                    }
+                });
+    }
+
+    private String checkSuccess(){
+        if(binding.btnEmployeeCreateTask.getText().toString().trim().isEmpty()
+        || binding.btnDescriptionCreateTask.getText().toString().trim().isEmpty()
+        || binding.btnTimeStartCreateTask.getText().toString().trim().isEmpty()
+        || binding.btnAssignVehicleCreateTask.getText().toString().trim().isEmpty()
+        || binding.btnAssignMCPCreateTask.getText().toString().trim().isEmpty()
+        || emailOfProject.equals("")){
+            return "Have a empty element";
+        } else return "Done";
+    }
+
+    private void onSuccess(){
+        String check = checkSuccess();
+        if(check.equals("Done")){
+            saveDataToDatabase();
+            moveToManageTask();
+        } else if(check.equals("Have a empty element")){
+            Toast.makeText(app, "Please type enough information", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private String setDate (){

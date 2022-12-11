@@ -22,6 +22,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.Transaction;
 
 public class ViewInformation extends AppCompatActivity implements View.OnClickListener{
     private ViewInformationBinding binding;
@@ -104,5 +106,21 @@ public class ViewInformation extends AppCompatActivity implements View.OnClickLi
             startActivity(intent);
             finish();
         }
+    }
+
+    private void updateProfile(String emailOfProject){
+        Information information;
+        DocumentReference documentReference = app.dataBase.collection("information").document(emailOfProject);
+        app.dataBase.runTransaction(new Transaction.Function<Void>() {
+            @Nullable
+            @Override
+            public Void apply(@NonNull Transaction transaction) throws FirebaseFirestoreException {
+                DocumentSnapshot snapshot = transaction.get(documentReference);
+
+                transaction.update(documentReference, "email", "abc");
+
+                return null;
+            }
+        });
     }
 }

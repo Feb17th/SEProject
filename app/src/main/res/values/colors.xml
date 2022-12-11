@@ -12,7 +12,7 @@
     <color name="greenGarbage">#04AD41</color>
     //Login
     <color name="whiteLogin">#E6D5D5</color>
-    <color name="greenGarbageSignIn">#049839</color>
+    <color name="greenGarbageSignIn">#2FDD6E</color>
 
     //View Information
     <color name="lineViewInformation">#CED1CB</color>
@@ -21,7 +21,11 @@
     <color name="whiteManageAccount">#E6D5D5</color>
     
     //Manage Task
-    <color name="greenAddTask">#084B27</color>
+    <color name="greenAddTask">#20D361</color>
+
+    //Set color for Status
+    <color name="greenStatus">#37EA78</color>
+    <color name="redStatus">#E11029</color>
 
     //Item Manage Task
     <color name="greenDetailsItemManageTask">#084B27</color>

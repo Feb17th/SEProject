@@ -19,8 +19,16 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="5"
-        android:text="Dọn rác buổi sáng tại Suối Tiên"
-        android:gravity="left"/>
+        android:gravity="left"
+        android:text="Dọn rác buổi sáng tại Suối Tiên" />
+
+    <TextView
+        android:id="@+id/tvStatusItemManageTask"
+        style="@style/itemManageTask"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:text="D" />
 
     <Button
         android:id="@+id/btnDetailsItemManageTask"

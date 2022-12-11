@@ -116,7 +116,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/no_sharp_corner_garbage_color"
                 android:text="@string/doneCreateTask"
-                android:textColor="@color/whiteCreateTask"
+                android:textColor="@android:color/black"
                 android:textSize="@dimen/textSizeCreateTask" />
 
             <ImageButton

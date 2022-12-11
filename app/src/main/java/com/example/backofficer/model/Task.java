@@ -10,6 +10,7 @@ public class Task implements Serializable {
     private String vehicle;
     private String mcp;
     private String emailOfProject;
+    private String status;
 
     public Task(){
         this.fullName = "";
@@ -18,15 +19,17 @@ public class Task implements Serializable {
         this.vehicle = "";
         this.mcp = "";
         this.emailOfProject = "";
+        this.status = "";
     }
 
-    public Task(String fullName, String description, String time, String vehicle, String mcp, String emailOfProject) {
+    public Task(String fullName, String description, String time, String vehicle, String mcp, String emailOfProject, String status) {
         this.fullName = fullName;
         this.description = description;
         this.time = time;
         this.vehicle = vehicle;
         this.mcp = mcp;
         this.emailOfProject = emailOfProject;
+        this.status = status;
     }
 
     public String getFullName() {
@@ -75,5 +78,13 @@ public class Task implements Serializable {
 
     public void setEmailOfProject(String emailOfProject) {
         this.emailOfProject = emailOfProject;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

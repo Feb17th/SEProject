@@ -1,6 +1,7 @@
 package com.example.backofficer.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,7 +50,7 @@ public class ManageTaskAdapter extends RecyclerView.Adapter<ManageTaskAdapter.Vi
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvNumberItemManageTask, tvDescriptionItemManageTask;
+        TextView tvNumberItemManageTask, tvDescriptionItemManageTask, tvStatusItemManageTask;
         Button btnDetailsItemManageTask;
 
         public ViewHolder(@NonNull View itemView) {
@@ -57,11 +58,17 @@ public class ManageTaskAdapter extends RecyclerView.Adapter<ManageTaskAdapter.Vi
             tvNumberItemManageTask = itemView.findViewById(R.id.tvNumberItemManageTask);
             tvDescriptionItemManageTask = itemView.findViewById(R.id.tvDescriptionItemManageTask);
             btnDetailsItemManageTask = itemView.findViewById(R.id.btnDetailsItemManageTask);
+            tvStatusItemManageTask = itemView.findViewById(R.id.tvStatusItemManageTask);
         }
 
         public void bind(Task task, int position) {
             tvNumberItemManageTask.setText(String.valueOf(position + 1));
             tvDescriptionItemManageTask.setText(task.getDescription());
+            if(task.getStatus().equals("Done")){
+                tvStatusItemManageTask.setTextColor(Color.parseColor("#37EA78"));
+            } else {
+                tvStatusItemManageTask.setTextColor(Color.parseColor("#E11029"));
+            }
 
             btnDetailsItemManageTask.setOnClickListener(new View.OnClickListener() {
                 @Override

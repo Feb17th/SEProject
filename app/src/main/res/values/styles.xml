@@ -5,6 +5,7 @@
         <item name="android:layout_marginStart">@dimen/marginStartViewInformation</item>
         <item name="android:layout_marginEnd">@dimen/marginEndViewInformation</item>
         <item name="android:textSize">@dimen/textSizeViewInformation</item>
+        <item name="android:textColor">@android:color/black</item>
     </style>
 
     <style name="login">
@@ -89,6 +90,14 @@
         <item name="android:layout_marginTop">@dimen/marginTopListEmployee</item>
         <item name="android:layout_marginBottom">@dimen/marginBotListEmployee</item>
         <item name="android:layout_marginStart">@dimen/marginStartListEmployee</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="ListMCP">
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:layout_marginStart">10dp</item>
         <item name="android:layout_gravity">center</item>
         <item name="android:gravity">center</item>
     </style>
