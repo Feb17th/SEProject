@@ -107,24 +107,24 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btnCheckInDetailsEmployee"
+            android:id="@+id/btnDoneDetailsEmployee"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginStart="@dimen/marginStartButtonDetailsEmployee"
             android:layout_weight="5"
             android:background="@drawable/no_sharp_corner_garbage_color"
-            android:text="@string/checkInDetailsEmployee" />
+            android:text="@string/doneDetailsEmployee" />
 
         <Button
-            android:id="@+id/btnCheckOutDetailsEmployee"
+            android:id="@+id/btnWorkingDetailsEmployee"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginStart="@dimen/marginStartButtonDetailsEmployee"
             android:layout_weight="5"
             android:background="@drawable/no_sharp_corner_garbage_color"
-            android:text="@string/checkOutDetailsEmployee" />
+            android:text="@string/workingDetailsEmployee" />
 
         <ImageButton
             android:id="@+id/ibBackPressDetailsEmployee"

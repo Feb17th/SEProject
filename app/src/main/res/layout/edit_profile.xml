@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/civPersonalViewInformation"
+        android:layout_width="@dimen/sizeCircleViewViewInformation"
+        android:layout_height="@dimen/sizeCircleViewViewInformation"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/marginTopViewInformation"
+        android:src="@drawable/personal_image_example" />
+
+    <TextView
+        android:id="@+id/tvFirstNameViewInformation"
+        style="@style/viewInformation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/firstNameViewInformation" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="@dimen/marginStartViewInformation"
+        android:layout_marginEnd="@dimen/marginEndViewInformation"
+        android:background="@color/lineViewInformation" />
+
+    <TextView
+        android:id="@+id/tvLastNameViewInformation"
+        style="@style/viewInformation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/lastNameViewInformation" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="@dimen/marginStartViewInformation"
+        android:layout_marginEnd="@dimen/marginEndViewInformation"
+        android:background="@color/lineViewInformation" />
+
+    <TextView
+        android:id="@+id/tvJobTypeViewInformation"
+        style="@style/viewInformation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/jobTypeViewInformation" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="@dimen/marginStartViewInformation"
+        android:layout_marginEnd="@dimen/marginEndViewInformation"
+        android:background="@color/lineViewInformation" />
+
+    <TextView
+        android:id="@+id/tvEmailViewInformation"
+        style="@style/viewInformation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/emailViewInformation" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="@dimen/marginStartViewInformation"
+        android:layout_marginEnd="@dimen/marginEndViewInformation"
+        android:background="@color/lineViewInformation" />
+
+    <TextView
+        android:id="@+id/tvPhoneNumberViewInformation"
+        style="@style/viewInformation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/phoneNumberViewInformation" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="@dimen/marginStartViewInformation"
+        android:layout_marginEnd="@dimen/marginEndViewInformation"
+        android:background="@color/lineViewInformation" />
+
+    <TextView
+        android:id="@+id/tvIdentityCardNumberViewInformation"
+        style="@style/viewInformation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/identityCardNumberViewInformation" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginTopViewInformation"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnEditProfileViewInformation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marginStartViewInformation"
+            android:layout_weight="2"
+            android:background="@drawable/no_sharp_corner_garbage_color"
+            android:text="@string/buttonEditProfileViewInformation" />
+
+        <ImageButton
+            android:id="@+id/ibBackPressViewInformation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/marginStartViewInformation"
+            android:layout_marginEnd="@dimen/marginEndViewInformation"
+            android:background="@drawable/no_sharp_corner_back_icon"
+            android:src="@drawable/back_icon" />
+
+    </LinearLayout>
+</LinearLayout>

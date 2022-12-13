@@ -46,8 +46,8 @@ public class ViewInformation extends AppCompatActivity implements View.OnClickLi
             FirebaseUser user = app.auth.getCurrentUser();
             takeInformation(user.getEmail());
         } else if(textReceiveFromAnotherActivity.equals("ManageAccount")){
-            Information informationFromManageInformation = (Information) getIntent().getSerializableExtra("sendingInformation");
-            takeInformation(informationFromManageInformation.getEmailOfProject());
+            information = (Information) getIntent().getSerializableExtra("sendingInformation");
+            takeInformation(information.getEmailOfProject());
         } else if(textReceiveFromAnotherActivity.equals("ChooseFeatureEmployee")){
             FirebaseUser user = app.auth.getCurrentUser();
             takeInformation(user.getEmail());
@@ -62,13 +62,13 @@ public class ViewInformation extends AppCompatActivity implements View.OnClickLi
                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
-                        information = documentSnapshot.toObject(Information.class);
-                        binding.tvFirstNameViewInformation.setText(information.getFirstName());
-                        binding.tvLastNameViewInformation.setText(information.getLastName());
-                        binding.tvJobTypeViewInformation.setText(information.getJobType());
-                        binding.tvEmailViewInformation.setText(information.getEmail());
-                        binding.tvPhoneNumberViewInformation.setText(information.getPhoneNumber());
-                        binding.tvIdentityCardNumberViewInformation.setText(information.getIdentityCardNumber());
+                        Information tempInformation = documentSnapshot.toObject(Information.class);
+                        binding.tvFirstNameViewInformation.setText(tempInformation.getFirstName());
+                        binding.tvLastNameViewInformation.setText(tempInformation.getLastName());
+                        binding.tvJobTypeViewInformation.setText(tempInformation.getJobType());
+                        binding.tvEmailViewInformation.setText(tempInformation.getEmail());
+                        binding.tvPhoneNumberViewInformation.setText(tempInformation.getPhoneNumber());
+                        binding.tvIdentityCardNumberViewInformation.setText(tempInformation.getIdentityCardNumber());
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -84,7 +84,7 @@ public class ViewInformation extends AppCompatActivity implements View.OnClickLi
         int id = v.getId();
 
         if(id == binding.btnEditProfileViewInformation.getId()){
-
+            updateProfile(information);
         } else if(id == binding.ibBackPressViewInformation.getId()){
             moveWithBackButton();
         }
@@ -108,19 +108,7 @@ public class ViewInformation extends AppCompatActivity implements View.OnClickLi
         }
     }
 
-    private void updateProfile(String emailOfProject){
-        Information information;
-        DocumentReference documentReference = app.dataBase.collection("information").document(emailOfProject);
-        app.dataBase.runTransaction(new Transaction.Function<Void>() {
-            @Nullable
-            @Override
-            public Void apply(@NonNull Transaction transaction) throws FirebaseFirestoreException {
-                DocumentSnapshot snapshot = transaction.get(documentReference);
+    private void updateProfile(Information information){
 
-                transaction.update(documentReference, "email", "abc");
-
-                return null;
-            }
-        });
     }
 }

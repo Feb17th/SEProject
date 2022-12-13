@@ -4,7 +4,9 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
@@ -19,17 +21,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.backofficer.App;
 import com.example.backofficer.R;
 import com.example.backofficer.databinding.DetailsBinding;
-import com.example.backofficer.model.Information;
+import com.example.backofficer.model.MCP;
 import com.example.backofficer.model.Task;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 
 public class Details extends AppCompatActivity implements View.OnClickListener{
     private DetailsBinding binding;
-    Task task = new Task();
     App app;
-    Task taskFromManageTask;
+    Task taskFromManageTask = new Task();
+    MCP mcp = new MCP();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,33 +44,19 @@ public class Details extends AppCompatActivity implements View.OnClickListener{
 
         binding.ibBackPressDetails.setOnClickListener(this);
         binding.btnDeleteDetails.setOnClickListener(this);
+        binding.tvRouteDetails.setOnClickListener(this);
 
         taskFromManageTask = (Task) getIntent().getSerializableExtra("sendingTask");
-        takeTask(taskFromManageTask.getDescription());
+
+        displayTask(taskFromManageTask);
     }
 
-    private void takeTask(String description){
-        app.dataBase
-                .collection("task")
-                .document(description)
-                .get()
-                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                    @Override
-                    public void onSuccess(DocumentSnapshot documentSnapshot) {
-                        task = documentSnapshot.toObject(Task.class);
-                        binding.tvDescriptionDetails.setText(task.getDescription());
-                        binding.tvTimeDetails.setText(task.getTime());
-                        binding.tvVehicleDetails.setText(task.getVehicle());
-                        binding.tvMCPDetails.setText(task.getMcp());
-                        binding.tvOwnerDetails.setText(task.getFullName());
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(app, "Can't Load Information", Toast.LENGTH_SHORT).show();
-                    }
-                });
+    private void displayTask(Task task){
+        binding.tvDescriptionDetails.setText(task.getDescription());
+        binding.tvTimeDetails.setText(task.getTime());
+        binding.tvVehicleDetails.setText(task.getVehicle());
+        binding.tvMCPDetails.setText(task.getMcp());
+        binding.tvOwnerDetails.setText(task.getFullName());
     }
 
     @Override
@@ -78,7 +67,41 @@ public class Details extends AppCompatActivity implements View.OnClickListener{
             moveBackToManageTask();
         } else if(id == binding.btnDeleteDetails.getId()){
             openDialogDeleteTask(Gravity.CENTER, taskFromManageTask);
+        } else if(id == binding.tvRouteDetails.getId()){
+            takeMCPToOpenGoogleMap(taskFromManageTask.getMcp());
         }
+    }
+
+    private void takeMCPToOpenGoogleMap(String getMCP){
+        app.dataBase
+                .collection("mcp")
+                .document(getMCP)
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        mcp = documentSnapshot.toObject(MCP.class);
+                        openGoogleMap(String.valueOf(mcp.getGeoPoint().getLatitude()),
+                                String.valueOf(mcp.getGeoPoint().getLongitude()),
+                                mcp.getName());
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(app, "Can't load data", Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
+    private void openGoogleMap(String latitude, String longitude, String name) {
+        Uri uri = Uri.parse("geo:" +
+                latitude + ", " +
+                longitude + "?q=" +
+                name);
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        intent.setPackage("com.google.android.apps.maps");
+        startActivity(intent);
     }
 
     private void openDialogDeleteTask(int gravity, Task taskFromManageTask) {
@@ -124,7 +147,7 @@ public class Details extends AppCompatActivity implements View.OnClickListener{
     private void deleteTask(Task taskFromManageTask){
         app.dataBase
                 .collection("task")
-                .document(task.getDescription())
+                .document(taskFromManageTask.getDescription())
                 .delete()
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override

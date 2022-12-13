@@ -17,6 +17,9 @@
     <string name="buttonEditProfileViewInformation">Edit Profile</string>
     <string name="identityCardNumberViewInformation">Identity card number</string>
 
+    //Edit Profile (Use many things the same as View Information)
+    <string name="updateEditProfile">Update</string>
+
     //Manage Account
     <string name="manageAccount">Manage Account</string>
     <string name="noManageAccount">No</string>
@@ -45,8 +48,8 @@
     <string name="deleteDetails">Delete</string>
 
     //Details Employee has many things the same as Details
-    <string name="checkInDetailsEmployee">Check In</string>
-    <string name="checkOutDetailsEmployee">Check Out</string>
+    <string name="doneDetailsEmployee">Done</string>
+    <string name="workingDetailsEmployee">Working</string>
 
     //Create Task
     <string name="createTask">Create Task</string>
