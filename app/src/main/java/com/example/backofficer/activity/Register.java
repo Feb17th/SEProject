@@ -55,19 +55,37 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             Toast.makeText(app, "Can't Register", Toast.LENGTH_SHORT).show();
             return;
         }
-        app.auth.createUserWithEmailAndPassword(email, password)
-                .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-                    @Override
-                    public void onSuccess(AuthResult authResult) {
-                        onCreateSuccess();
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(app, "Cannot register", Toast.LENGTH_SHORT).show();
-                    }
-                });
+
+        String check = checkEmpty();
+        if(check.equals("Done")){
+            app.auth.createUserWithEmailAndPassword(email, password)
+                    .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                        @Override
+                        public void onSuccess(AuthResult authResult) {
+                            onCreateSuccess();
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(app, e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+        } else if(check.equals("Have empty element")){
+            Toast.makeText(app, "Please type enough information", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private String checkEmpty(){
+        if(binding.txtEmailOfProjectRegister.getText().toString().isEmpty()
+        || binding.txtFirstNameRegister.getText().toString().isEmpty()
+        || binding.txtLastNameRegister.getText().toString().isEmpty()
+        || binding.txtJobTypeRegister.getText().toString().isEmpty()
+        || binding.txtEmailRegister.getText().toString().isEmpty()
+        || binding.txtPhoneNumberRegister.getText().toString().isEmpty()
+        || binding.txtIdentityCardNumberRegister.getText().toString().isEmpty()){
+            return "Have empty element";
+        } else return "Done";
     }
 
     private void onCreateSuccess() {
