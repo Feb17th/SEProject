@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BackOfficer</string>
+    <string name="app_name">Waste Collection</string>
 
     //Login
     <string name="emailLogin">Email</string>
