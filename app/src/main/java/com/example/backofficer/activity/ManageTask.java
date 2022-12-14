@@ -94,7 +94,7 @@ public class ManageTask extends AppCompatActivity implements View.OnClickListene
                     @Override
                     public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                         if(error != null){
-                            Toast.makeText(app, "Fail Loading Data", Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(app, "Fail Loading Data", Toast.LENGTH_SHORT).show();
                             return;
                         }
 
@@ -118,7 +118,7 @@ public class ManageTask extends AppCompatActivity implements View.OnClickListene
                     @Override
                     public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                         if(error != null){
-                            Toast.makeText(app, "Fail Loading Data", Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(app, "Fail Loading Data", Toast.LENGTH_SHORT).show();
                             return;
                         }
                         
@@ -166,7 +166,9 @@ public class ManageTask extends AppCompatActivity implements View.OnClickListene
     }
 
     private void moveToDetails(Task task) {
+        String text = "ManageTask";
         Intent intent = new Intent(ManageTask.this, Details.class);
+        intent.putExtra("sendingText", text);
         intent.putExtra("sendingTask", task);
         startActivity(intent);
         finish();

@@ -45,18 +45,16 @@ public class Details extends AppCompatActivity implements View.OnClickListener{
         binding.ibBackPressDetails.setOnClickListener(this);
         binding.btnDeleteDetails.setOnClickListener(this);
         binding.tvRouteDetails.setOnClickListener(this);
+        binding.btnEditTaskDetails.setOnClickListener(this);
 
-        taskFromManageTask = (Task) getIntent().getSerializableExtra("sendingTask");
+        String textReceiveFromAnotherActivity = getIntent().getStringExtra("sendingText");
+        if(textReceiveFromAnotherActivity.equals("ManageTask")){
+            taskFromManageTask = (Task) getIntent().getSerializableExtra("sendingTask");
+        } else if(textReceiveFromAnotherActivity.equals("CreateTask")){
+            taskFromManageTask = (Task) getIntent().getSerializableExtra("sendingTask");
+        }
 
         displayTask(taskFromManageTask);
-    }
-
-    private void displayTask(Task task){
-        binding.tvDescriptionDetails.setText(task.getDescription());
-        binding.tvTimeDetails.setText(task.getTime());
-        binding.tvVehicleDetails.setText(task.getVehicle());
-        binding.tvMCPDetails.setText(task.getMcp());
-        binding.tvOwnerDetails.setText(task.getFullName());
     }
 
     @Override
@@ -69,7 +67,17 @@ public class Details extends AppCompatActivity implements View.OnClickListener{
             openDialogDeleteTask(Gravity.CENTER, taskFromManageTask);
         } else if(id == binding.tvRouteDetails.getId()){
             takeMCPToOpenGoogleMap(taskFromManageTask.getMcp());
+        } else if(id == binding.btnEditTaskDetails.getId()){
+            moveToCreateTask(taskFromManageTask);
         }
+    }
+
+    private void displayTask(Task task){
+        binding.tvDescriptionDetails.setText(task.getDescription());
+        binding.tvTimeDetails.setText(task.getTime());
+        binding.tvVehicleDetails.setText(task.getVehicle());
+        binding.tvMCPDetails.setText(task.getMcp());
+        binding.tvOwnerDetails.setText(task.getFullName());
     }
 
     private void takeMCPToOpenGoogleMap(String getMCP){
@@ -167,6 +175,15 @@ public class Details extends AppCompatActivity implements View.OnClickListener{
         String text = "Details";
         Intent intent = new Intent(Details.this, ManageTask.class);
         intent.putExtra("sendingText", text);
+        startActivity(intent);
+        finish();
+    }
+
+    private void moveToCreateTask(Task task){
+        String text = "Details";
+        Intent intent = new Intent(Details.this, CreateTask.class);
+        intent.putExtra("sendingText", text);
+        intent.putExtra("sendingTask", task);
         startActivity(intent);
         finish();
     }

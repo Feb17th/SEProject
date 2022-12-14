@@ -1,15 +1,10 @@
 package com.example.backofficer.activity;
 
-import android.app.Activity;
-import android.app.Application;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import androidx.activity.OnBackPressedCallback;
-import androidx.activity.OnBackPressedDispatcherOwner;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,10 +15,7 @@ import com.example.backofficer.model.Information;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.Transaction;
 
 public class ViewInformation extends AppCompatActivity implements View.OnClickListener{
     private ViewInformationBinding binding;
@@ -44,14 +36,30 @@ public class ViewInformation extends AppCompatActivity implements View.OnClickLi
         String textReceiveFromAnotherActivity = getIntent().getStringExtra("sendingText");
         if(textReceiveFromAnotherActivity.equals("ChooseFeatureBackOfficer")){
             FirebaseUser user = app.auth.getCurrentUser();
+            binding.btnEditProfileViewInformation.setVisibility(View.INVISIBLE);
             takeInformation(user.getEmail());
         } else if(textReceiveFromAnotherActivity.equals("ManageAccount")){
             information = (Information) getIntent().getSerializableExtra("sendingInformation");
-            takeInformation(information.getEmailOfProject());
+//            takeInformation(information.getEmailOfProject());
+            displayInformation(information);
         } else if(textReceiveFromAnotherActivity.equals("ChooseFeatureEmployee")){
             FirebaseUser user = app.auth.getCurrentUser();
+            binding.btnEditProfileViewInformation.setVisibility(View.INVISIBLE);
             takeInformation(user.getEmail());
+        } else if(textReceiveFromAnotherActivity.equals("EditProfile")){
+            information = (Information) getIntent().getSerializableExtra("sendingInformation");
+//            takeInformation(information.getEmailOfProject());
+            displayInformation(information);
         }
+    }
+
+    private void displayInformation(Information tempInformation){
+        binding.tvFirstNameViewInformation.setText(tempInformation.getFirstName());
+        binding.tvLastNameViewInformation.setText(tempInformation.getLastName());
+        binding.tvJobTypeViewInformation.setText(tempInformation.getJobType());
+        binding.tvEmailViewInformation.setText(tempInformation.getEmail());
+        binding.tvPhoneNumberViewInformation.setText(tempInformation.getPhoneNumber());
+        binding.tvIdentityCardNumberViewInformation.setText(tempInformation.getIdentityCardNumber());
     }
 
     private void takeInformation(String emailOfProject){
@@ -84,7 +92,7 @@ public class ViewInformation extends AppCompatActivity implements View.OnClickLi
         int id = v.getId();
 
         if(id == binding.btnEditProfileViewInformation.getId()){
-            updateProfile(information);
+            moveToEditProfile(information);
         } else if(id == binding.ibBackPressViewInformation.getId()){
             moveWithBackButton();
         }
@@ -100,6 +108,10 @@ public class ViewInformation extends AppCompatActivity implements View.OnClickLi
             Intent intent = new Intent(ViewInformation.this, ManageAccount.class);
             startActivity(intent);
             finish();
+        } else if(textReceiveFromAnotherActivity.equals("EditProfile")){
+            Intent intent = new Intent(ViewInformation.this, ManageAccount.class);
+            startActivity(intent);
+            finish();
         }
         else {
             Intent intent = new Intent(ViewInformation.this, ChooseFeatureEmployee.class);
@@ -108,7 +120,12 @@ public class ViewInformation extends AppCompatActivity implements View.OnClickLi
         }
     }
 
-    private void updateProfile(Information information){
-
+    private void moveToEditProfile(Information information){
+        String text = "ViewInformation";
+        Intent intent = new Intent(ViewInformation.this, EditProfile.class);
+        intent.putExtra("sendingText", text);
+        intent.putExtra("sendingInformation", information);
+        startActivity(intent);
+        finish();
     }
 }

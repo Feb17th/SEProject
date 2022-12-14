@@ -5,89 +5,54 @@
     android:orientation="vertical">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/civPersonalViewInformation"
+        android:id="@+id/civPersonalEditProfile"
         android:layout_width="@dimen/sizeCircleViewViewInformation"
         android:layout_height="@dimen/sizeCircleViewViewInformation"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/marginTopViewInformation"
         android:src="@drawable/personal_image_example" />
 
-    <TextView
-        android:id="@+id/tvFirstNameViewInformation"
+    <EditText
+        android:id="@+id/txtFirstNameEditProfile"
         style="@style/viewInformation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/firstNameViewInformation" />
+        android:hint="@string/firstNameViewInformation" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginStart="@dimen/marginStartViewInformation"
-        android:layout_marginEnd="@dimen/marginEndViewInformation"
-        android:background="@color/lineViewInformation" />
-
-    <TextView
-        android:id="@+id/tvLastNameViewInformation"
+    <EditText
+        android:id="@+id/txtLastNameEditProfile"
         style="@style/viewInformation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/lastNameViewInformation" />
+        android:hint="@string/lastNameViewInformation" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginStart="@dimen/marginStartViewInformation"
-        android:layout_marginEnd="@dimen/marginEndViewInformation"
-        android:background="@color/lineViewInformation" />
-
-    <TextView
-        android:id="@+id/tvJobTypeViewInformation"
+    <EditText
+        android:id="@+id/txtJobTypeEditProfile"
         style="@style/viewInformation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/jobTypeViewInformation" />
+        android:hint="@string/jobTypeViewInformation" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginStart="@dimen/marginStartViewInformation"
-        android:layout_marginEnd="@dimen/marginEndViewInformation"
-        android:background="@color/lineViewInformation" />
-
-    <TextView
-        android:id="@+id/tvEmailViewInformation"
+    <EditText
+        android:id="@+id/txtEmailEditProfile"
         style="@style/viewInformation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/emailViewInformation" />
+        android:hint="@string/emailViewInformation" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginStart="@dimen/marginStartViewInformation"
-        android:layout_marginEnd="@dimen/marginEndViewInformation"
-        android:background="@color/lineViewInformation" />
-
-    <TextView
-        android:id="@+id/tvPhoneNumberViewInformation"
+    <EditText
+        android:id="@+id/txtPhoneNumberEditProfile"
         style="@style/viewInformation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/phoneNumberViewInformation" />
+        android:hint="@string/phoneNumberViewInformation" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginStart="@dimen/marginStartViewInformation"
-        android:layout_marginEnd="@dimen/marginEndViewInformation"
-        android:background="@color/lineViewInformation" />
-
-    <TextView
-        android:id="@+id/tvIdentityCardNumberViewInformation"
+    <EditText
+        android:id="@+id/txtIdentityCardNumberEditProfile"
         style="@style/viewInformation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/identityCardNumberViewInformation" />
+        android:hint="@string/identityCardNumberViewInformation" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -96,16 +61,16 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btnEditProfileViewInformation"
+            android:id="@+id/btnUpdateEditProfile"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/marginStartViewInformation"
             android:layout_weight="2"
             android:background="@drawable/no_sharp_corner_garbage_color"
-            android:text="@string/buttonEditProfileViewInformation" />
+            android:text="@string/updateEditProfile" />
 
         <ImageButton
-            android:id="@+id/ibBackPressViewInformation"
+            android:id="@+id/ibBackPressEditProfile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

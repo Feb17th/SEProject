@@ -41,7 +41,7 @@ public class ChooseFeatureEmployee extends AppCompatActivity implements View.OnC
     }
 
     private void signOut() {
-        app.auth.signOut();
+//        app.auth.signOut();
         Intent intent = new Intent(ChooseFeatureEmployee.this, Login.class);
         startActivity(intent);
         finish();

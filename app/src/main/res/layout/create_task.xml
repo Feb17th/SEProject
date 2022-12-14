@@ -10,6 +10,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/tvTittleCreateTask"
             style="@style/createTask"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -70,7 +71,7 @@
         </LinearLayout>
 
         <EditText
-            android:id="@+id/btnDescriptionCreateTask"
+            android:id="@+id/txtDescriptionCreateTask"
             style="@style/createTaskFeature"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

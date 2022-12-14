@@ -45,11 +45,14 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 public class CreateTask extends AppCompatActivity implements View.OnClickListener{
     private CreateTaskBinding binding;
     App app;
+    Task taskFromDetails = new Task();
 
     int hour, minute;
     String emailOfProject = "";
@@ -70,16 +73,31 @@ public class CreateTask extends AppCompatActivity implements View.OnClickListene
         binding.btnAssignVehicleCreateTask.setOnClickListener(this);
         binding.btnEmployeeCreateTask.setOnClickListener(this);
         binding.btnAssignMCPCreateTask.setOnClickListener(this);
+
+        String textReceiveFromAnotherActivity = getIntent().getStringExtra("sendingText");
+        if(textReceiveFromAnotherActivity.equals("Details")){
+            taskFromDetails = (Task) getIntent().getSerializableExtra("sendingTask");
+            displayFromDetails(taskFromDetails);
+        }
     }
 
     @Override
     public void onClick(View v) {
         int id = v.getId();
+        String textReceiveFromAnotherActivity = getIntent().getStringExtra("sendingText");
 
         if(id == binding.btnDoneCreateTask.getId()){
-            onSuccess();
+            if(textReceiveFromAnotherActivity.equals("ManageTask")){
+                onSuccess();
+            } else if(textReceiveFromAnotherActivity.equals("Details")){
+                updateTaskToFirebase(taskFromDetails);
+            }
         } else if(id == binding.ibBackPressCreateTask.getId()){
-            moveToManageTask();
+            if(textReceiveFromAnotherActivity.equals("ManageTask")){
+                moveToManageTask();
+            } else if(textReceiveFromAnotherActivity.equals("Details")){
+                moveToDetails(taskFromDetails);
+            }
         } else if(id == binding.btnTimeStartCreateTask.getId()){
             pickTime();
         } else if(id == binding.btnAssignVehicleCreateTask.getId()){
@@ -89,6 +107,56 @@ public class CreateTask extends AppCompatActivity implements View.OnClickListene
         } else if(id == binding.btnAssignMCPCreateTask.getId()){
             openMCPBottomSheetFragment();
         }
+    }
+
+    private void updateTaskToFirebase(Task task){
+        Map<String, Object> taskMap = new HashMap<>();
+        taskMap.put("time", binding.btnTimeStartCreateTask.getText().toString().trim());
+        taskMap.put("vehicle", binding.btnAssignVehicleCreateTask.getText().toString().trim());
+        taskMap.put("mcp", binding.btnAssignMCPCreateTask.getText().toString().trim());
+        taskMap.put("fullName", binding.btnEmployeeCreateTask.getText().toString().trim());
+        app.dataBase
+                .collection("task")
+                .document(binding.txtDescriptionCreateTask.getText().toString().trim())
+                .update(taskMap)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Toast.makeText(app, "Update successfully!", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(app, "Have some wrong during updating task!", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+        updateTaskBeforeMoveToDetails(task);
+    }
+
+    private void updateTaskBeforeMoveToDetails(Task task){
+        task.setTime(binding.btnTimeStartCreateTask.getText().toString().trim());
+        task.setVehicle(binding.btnAssignVehicleCreateTask.getText().toString().trim());
+        task.setMcp(binding.btnAssignMCPCreateTask.getText().toString().trim());
+        task.setFullName(binding.btnEmployeeCreateTask.getText().toString().trim());
+    }
+
+    private void displayFromDetails(Task task){
+        String tittle = "Update Task";
+        String updateButton = "Update";
+
+        binding.tvTittleCreateTask.setText(tittle);
+        binding.btnDoneCreateTask.setText(updateButton);
+
+        binding.btnTimeStartCreateTask.setText(task.getTime());
+        binding.btnAssignVehicleCreateTask.setText(task.getVehicle());
+        binding.txtDescriptionCreateTask.setText(task.getDescription());
+        binding.btnAssignMCPCreateTask.setText(task.getMcp());
+        binding.btnEmployeeCreateTask.setText(task.getFullName());
+
+        binding.txtDescriptionCreateTask.setFocusable(false);
+        binding.txtDescriptionCreateTask.setTextColor(getResources().getColor(R.color.black));
     }
 
     private void pickTime() {
@@ -371,10 +439,19 @@ public class CreateTask extends AppCompatActivity implements View.OnClickListene
         finish();
     }
 
+    private void moveToDetails(Task task){
+        String text = "CreateTask";
+        Intent intent = new Intent(CreateTask.this, Details.class);
+        intent.putExtra("sendingText", text);
+        intent.putExtra("sendingTask", task);
+        startActivity(intent);
+        finish();
+    }
+
     private void saveDataToDatabase() {
         Task task = new Task(
                 binding.btnEmployeeCreateTask.getText().toString().trim(),
-                binding.btnDescriptionCreateTask.getText().toString().trim(),
+                binding.txtDescriptionCreateTask.getText().toString().trim(),
                 binding.btnTimeStartCreateTask.getText().toString().trim(),
                 binding.btnAssignVehicleCreateTask.getText().toString().trim(),
                 binding.btnAssignMCPCreateTask.getText().toString().trim(),
@@ -383,25 +460,25 @@ public class CreateTask extends AppCompatActivity implements View.OnClickListene
         );
         app.dataBase
                 .collection("task")
-                .document(binding.btnDescriptionCreateTask.getText().toString().trim())
+                .document(binding.txtDescriptionCreateTask.getText().toString().trim())
                 .set(task)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
-
+                        Toast.makeText(app, "Create successfully!", Toast.LENGTH_SHORT).show();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-
+                        Toast.makeText(app, "Create task fail", Toast.LENGTH_SHORT).show();
                     }
                 });
     }
 
     private String checkSuccess(){
         if(binding.btnEmployeeCreateTask.getText().toString().trim().isEmpty()
-        || binding.btnDescriptionCreateTask.getText().toString().trim().isEmpty()
+        || binding.txtDescriptionCreateTask.getText().toString().trim().isEmpty()
         || binding.btnTimeStartCreateTask.getText().toString().trim().isEmpty()
         || binding.btnAssignVehicleCreateTask.getText().toString().trim().isEmpty()
         || binding.btnAssignMCPCreateTask.getText().toString().trim().isEmpty()
@@ -410,10 +487,20 @@ public class CreateTask extends AppCompatActivity implements View.OnClickListene
         } else return "Done";
     }
 
+    private void changeUserVehicle(){
+        Map<String, Object> vehicleMap = new HashMap<>();
+        vehicleMap.put("user", binding.btnEmployeeCreateTask.getText().toString().trim());
+        app.dataBase
+                .collection("vehicle")
+                .document(binding.btnAssignVehicleCreateTask.getText().toString().trim())
+                .update(vehicleMap);
+    }
+
     private void onSuccess(){
         String check = checkSuccess();
         if(check.equals("Done")){
             saveDataToDatabase();
+            changeUserVehicle();
             moveToManageTask();
         } else if(check.equals("Have a empty element")){
             Toast.makeText(app, "Please type enough information", Toast.LENGTH_SHORT).show();

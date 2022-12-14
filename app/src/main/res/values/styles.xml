@@ -56,6 +56,7 @@
         <item name="android:layout_marginTop">@dimen/marginTopCreateTask</item>
         <item name="android:layout_marginStart">@dimen/marginStartCreateTask</item>
         <item name="android:layout_marginEnd">@dimen/marginEndCreateTask</item>
+        <item name="android:textStyle">bold</item>
     </style>
     <style name="createTaskFeature">
         <item name="android:layout_marginTop">50dp</item>

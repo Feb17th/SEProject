@@ -66,7 +66,7 @@ public class ChooseFeatureBackOfficer extends AppCompatActivity implements View.
     }
 
     private void signOut(){
-        app.auth.signOut();
+//        app.auth.signOut();
         Intent intent = new Intent(ChooseFeatureBackOfficer.this, Login.class);
         startActivity(intent);
         finish();

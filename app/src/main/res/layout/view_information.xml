@@ -100,17 +100,18 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/marginStartViewInformation"
-            android:layout_weight="2"
+            android:layout_weight="10"
             android:background="@drawable/no_sharp_corner_garbage_color"
             android:text="@string/buttonEditProfileViewInformation" />
 
         <ImageButton
             android:id="@+id/ibBackPressViewInformation"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginStart="@dimen/marginStartViewInformation"
             android:layout_marginEnd="@dimen/marginEndViewInformation"
+            android:layout_weight="1"
             android:background="@drawable/no_sharp_corner_back_icon"
             android:src="@drawable/back_icon" />
 
